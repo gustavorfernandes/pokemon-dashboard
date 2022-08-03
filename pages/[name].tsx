@@ -4,11 +4,11 @@ import { useRouter } from 'next/router'
 
 const Pokemon = () => {
   const router = useRouter()
-  const { name } = router.query
-  
+  const { name } = router.query 
+
   return (
     <>
-      <PokemonAbout />
+      <PokemonAbout name={name} />
 
       <Footer />
     </>

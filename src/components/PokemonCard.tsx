@@ -1,8 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
+import axios from "axios"
+import { useEffect } from "react"
 
 function PokemonCard() {
-  const pokemonName = "bulbasaur"
+  // useEffect(() => {
+  //   axios({
+  //     method: "get",
+  //     url: "https://pokeapi.co/api/v2/pokemon/bulbasaur/",
+  //     responseType: "json",
+  //   }).then(function (response) {
+  //     console.log(response.data)
+  //   }).catch(function (error) {
+  //     console.log(error.data)
+  //   })
+  // },[])
+
+  const pokemonName = "zubat"
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
@@ -13,14 +27,14 @@ function PokemonCard() {
               <img
                 className="w-full"
                 src="/images/bulba.png"
-                alt="Bulbasaur"                
+                alt="Bulbasaur"
               />
             </a>
           </Link>
         </div>
 
         <div className="w-full flex items-center justify-between">
-        <div className="flex flex-col gap-2 justify-center">
+          <div className="flex flex-col gap-2 justify-center">
             <span className="self-start text-neutral-700 font-light">
               {"n 001"}
             </span>
