@@ -1,36 +1,33 @@
-import { GoSearch } from "@react-icons/all-files/go/GoSearch"
 import PokemonCard from "../components/PokemonCard"
+import Search from "../components/Search"
 
-function PokemonList() {
+function  PokemonList() {
   return (
     <div className="w-screen flex flex-col items-center justify-center">
-      <div className="w-11/12 flex flex-col items-center justify-center mt-8">
-        <div className="w-screen bg-neutral-800 py-4 mb-16 flex flex-col items-center justify-center gap-4">
-          <div className="w-11/12 flex flex-col justify-center">
-            <h1 className="w-10/12 font-sans text-3xl font-bold text-neutral-100 mb-4">
+      <div className="w-10/12 flex flex-col items-center justify-center mt-8">
+        <div className="w-screen bg-neutral-800 py-4 mb-8 flex flex-col items-center justify-center gap-4">
+          <div className="w-10/12 flex flex-col justify-center">
+            <h1 className="w-9/12 font-exo font-light text-3xl text-neutral-100 mb-2">
               Pokédex
             </h1>
 
-            <h2 className="w-10/12 text-base text-neutral-200 my-4">
+            <h2 className="w-10/12 text-base text-neutral-200 my-4 font-roboto font-light">
               Search for a Pokémon by name or using its National Pokédex number.
             </h2>
 
-            <div className="w-full flex items-center justify-center gap-4 mb-4">
-              <div className="w-10/12 h-11 border-2 border-neutral-600 bg-white rounded-md">
-              </div>
-
-              <div className="flex justify-center items-center bg-red-500 p-3 rounded-md shadow-button">
-                <GoSearch
-                  color="white"
-                  size={20}
-                />
-              </div>
-            </div>
+            <Search />
           </div>
         </div>
       </div>
 
       <PokemonCard />
+
+      <div className="w-10/12 flex items-center justify-center mt-12">
+        <button className="w-full bg-sky-600 hover:bg-sky-700 py-2 rounded transition-all shadow-button text-white font-exo text-lg">
+          Load more Pokémon
+        </button>
+      </div>
+
     </div>
   )
 }

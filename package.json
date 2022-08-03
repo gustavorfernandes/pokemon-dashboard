@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "axios": "^0.27.2",
     "hamburger-react": "^2.5.0",
     "next": "12.2.3",
     "phosphor-react": "^1.4.1",
