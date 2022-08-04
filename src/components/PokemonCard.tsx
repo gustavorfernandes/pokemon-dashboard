@@ -1,27 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
-import axios from "axios"
-import { useEffect } from "react"
 
 function PokemonCard() {
-  // useEffect(() => {
-  //   axios({
-  //     method: "get",
-  //     url: "https://pokeapi.co/api/v2/pokemon/bulbasaur/",
-  //     responseType: "json",
-  //   }).then(function (response) {
-  //     console.log(response.data)
-  //   }).catch(function (error) {
-  //     console.log(error.data)
-  //   })
-  // },[])
-
-  const pokemonName = "zubat"
+  const pokemonName = "wobbuffet"
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <div className="w-10/12 flex flex-col justify-center gap-2 font-exo hover:-translate-y-1 transition duration-75 select-none">
-        <div className="w-full bg-neutral-200 p-8 rounded-lg flex items-center justify-center mb-2">
+        <div className="w-full bg-neutral-100 p-8 rounded-lg flex items-center justify-center mb-2">
           <Link href={`/${pokemonName}`}>
             <a>
               <img

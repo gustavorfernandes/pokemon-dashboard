@@ -4,8 +4,9 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 type Pokemon = typeof initPokemon
+
 const initPokemon = {
-  order: "",
+  id: "",
   name: "",
   types: [
     {
@@ -13,7 +14,14 @@ const initPokemon = {
         name: ""
       }
     }
-  ]
+  ],
+  sprites: {
+    other: {
+      ["official-artwork"]: {
+        "front_default": ""
+      }
+    }
+  }
 }
 
 function PokemonAbout(props: any) {
@@ -36,29 +44,48 @@ function PokemonAbout(props: any) {
     }
   }, [slug])
 
+  function IDMask() {
+    if (data) {
+      const pokeId = parseInt(data.id)
+      let idToString = `#${data.id}`
+
+      if (pokeId < 10) {
+        idToString = `#00${pokeId}`
+      } else if (pokeId >= 10 && pokeId < 100) {
+        idToString = `#0${pokeId}`
+      }
+      return idToString
+    }
+  }
+
   return (
     <div className="w-screen flex flex-col items-center justify-center">
 
       {slug &&
         <div className="flex items-center justify-center gap-4">
-          <h2 className="text-4xl text-neutral-800 capitalize font-exo mt-16">
+          <h2 className="text-3xl text-neutral-800 capitalize font-exo mt-16">
             {data.name}
           </h2>
-          <span className="text-4xl text-neutral-800 capitalize font-exo mt-16">
-            {`#${data.order}`}
+          <span className="text-3xl text-neutral-600 capitalize font-exo mt-16">
+            {IDMask()}
           </span>
         </div>
       }
 
-      <div className="flex flex-col gap-2 justify-center mt-8">
+      <div className="flex gap-2 justify-center my-8">
         {data.types.map((item, index) => (
-          <span key={index}>
+          <span className="py-1 px-3 w-28 text-center bg-green-400 rounded-xl font-exo" key={index}>
             {item.type.name}
           </span>
         ))}
-
       </div>
 
+      <div className="flex flex-col w-10/12 bg-neutral-100 rounded-md p-3">
+        <img
+          src={data.sprites.other["official-artwork"].front_default}
+          alt={data.name}
+        />
+      </div>
       <div className="w-10/12 flex items-center justify-center mt-12">
         <button className="w-full bg-green-600 hover:bg-green-700 py-2 rounded transition-all shadow-button text-white font-exo text-lg">
           <Link href={"/"}>
