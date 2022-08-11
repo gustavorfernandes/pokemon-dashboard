@@ -1,7 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import PokemonCard from "../components/PokemonCard"
 import Search from "../components/Search"
+import { GlobalContext } from "../contexts/GlobalContext"
+import { useContext, useEffect } from "react"
 
 function  PokemonList() {
+  const { fetchPokemonList }: any = useContext(GlobalContext)  
+
+  useEffect(() => {
+    fetchPokemonList("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10")
+  }, [])
+
   return (
     <div className="w-screen flex flex-col items-center justify-center">
       <div className="w-10/12 flex flex-col items-center justify-center mt-8">

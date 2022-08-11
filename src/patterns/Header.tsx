@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { Squash as Hamburger } from 'hamburger-react'
-import { SlidersHorizontal } from 'phosphor-react'
-import { useState } from 'react'
+import { Squash as Hamburger } from "hamburger-react"
+import { SlidersHorizontal } from "phosphor-react"
+import { useState } from "react"
 
 function Header() {
   const [isOpen, setOpen] = useState(false)
@@ -24,8 +24,8 @@ function Header() {
           alt="Pokémon Logo"
         />
 
-        <div className='bg-neutral-200 rounded-lg shadow-button hover:scale-110 transition-all'>
-          <button className='rounded-md p-2 flex justify-center items-center'>
+        <div className="bg-neutral-200 rounded-lg shadow-button hover:scale-110 transition-all">
+          <button className="rounded-md p-2 flex justify-center items-center">
             <SlidersHorizontal
               size={24}
             />
