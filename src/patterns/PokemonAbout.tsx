@@ -1,9 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
+import axios from "axios"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 function PokemonAbout(props: any) {
   const pokemon = props.pokemon
+  const [description, setDescription] = useState("")
+  console.log(pokemon)
 
   function IDMask() {
     if (pokemon) {
@@ -32,14 +36,51 @@ function PokemonAbout(props: any) {
     )
   }
 
+  async function getDescription() {
+    const res = await axios.get(pokemon.species.url)
+      .then((response) => {
+        return response.data.flavor_text_entries[10].flavor_text
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    setDescription(res)
+  }
+
+  useEffect(() => {
+    getDescription()
+  }, [])
+
   return (
     <div className="w-screen flex flex-col items-center justify-center">
 
-     <div className="w-10/12 flex items-center justify-center gap-4 mb-6">
-        <h2 className="text-3xl text-neutral-800 capitalize font-exo mt-16">
+      <div className="w-10/12 flex items-center justify-between mt-8">
+        <button className="w-6/12 flex items-center">
+          {pokemon.id > 1 &&
+            <Link href={`${parseInt(pokemon.id) - 1}`}>
+              <a>
+                Prev
+              </a>
+            </Link>
+          }
+        </button>
+        <button className="w-6/12 flex items-center justify-end">
+         {pokemon.id < 251 &&
+           <Link href={`${parseInt(pokemon.id) + 1}`}>
+           <a>
+             Next
+           </a>
+         </Link>         
+         }
+        </button>
+      </div>
+
+
+      <div className="w-10/12 flex items-center justify-center gap-4 mb-6">
+        <h2 className="text-3xl text-neutral-800 capitalize font-exo mt-8">
           {pokemon.name}
         </h2>
-        <span className="text-3xl text-neutral-600 capitalize font-exo mt-16">
+        <span className="text-3xl text-neutral-600 capitalize font-exo mt-8">
           {IDMask()}
         </span>
       </div>
@@ -51,11 +92,11 @@ function PokemonAbout(props: any) {
         />
       </div>
 
-      {/* <div className="w-10/12 flex items-center justify-center mt-12">
+      <div className="w-10/12 flex items-center justify-center mt-12">
         <p className="font-exo tracking-wide leading-7 text-neutral-800 text-lg">
-          {species.flavor_text_entries[21].flavor_text}
+          {description}
         </p>
-      </div> */}
+      </div>
 
       <div className="w-10/12 flex flex-col justify-start gap-4 my-8">
         <span className="text-2xl font-exo text-neutral-700">
