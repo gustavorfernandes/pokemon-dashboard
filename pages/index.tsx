@@ -6,9 +6,9 @@ import PokemonList from "../src/patterns/PokemonList"
 import axios from "axios"
 
 export async function getStaticProps(context: any) {
-  const pokemons = await axios.get("https://pokeapi.co/api/v2/pokemon/?offset=00&limit=251/")
+  const pokemons = await axios.get("https://pokeapi.co/api/v2/pokedex/2/")
     .then((response) => {
-      return response.data.results
+      return response.data.pokemon_entries
     })
     .catch((error) => {
       console.log(error)

@@ -17,23 +17,23 @@ function PokemonCard(props: any) {
               <div className="w-full flex items-center justify-between">
                 <div className="flex flex-col justify-center">
                   <span className="self-start text-neutral-500 font-bold">
-                    {index + 1 < 10 && `n 00${index + 1}`}
-                    {index + 1 >= 10 && index + 1 < 100 && `n 0${index + 1}`}
-                    {index + 1 >= 100 && `n ${index + 1}`}
+                    {item.entry_number < 10 && `n 00${item.entry_number}`}
+                    {item.entry_number >= 10 && item.entry_number < 100 && `n 0${item.entry_number}`}
+                    {item.entry_number >= 100 && `n ${item.entry_number}`}
                   </span>
                   <h2 className="capitalize text-3xl text-neutral-800 font-bold">
-                    {item.name}
+                    {item.pokemon_species.name}
                   </h2>
                 </div>
               </div>
 
               <div className="w-full bg-neutral-100 p-8 rounded-lg flex items-center justify-center mb-2">
-                <Link href={`${index + 1}`}>
+                <Link href={`${item.entry_number}`}>
                   <a>
                     <img
                       className="w-full"
-                      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png`}
-                      alt={item.name}
+                      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.entry_number}.png`}
+                      alt={item.pokemon_species.name}
                     />
                   </a>
                 </Link>

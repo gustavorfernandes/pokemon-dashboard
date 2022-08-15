@@ -13,16 +13,16 @@ const Pokemon = ({ pokemon }: any) => {
 }
 
 export async function getStaticPaths() {
-  const pokemons = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=00&limit=251`)
+  const pokemons = await axios.get(`https://pokeapi.co/api/v2/pokedex/2/`)
     .then((response) => {
-      return response.data.results
+      return response.data.pokemon_entries
     })
     .catch((error) => {
       console.log(error)
     })
 
   const paths = pokemons.map((pokemon: any) => ({
-    params: { id: pokemon.url.substr(34, 1) },
+    params: { id: `${pokemon.entry_number}` },
   }))
 
   return { paths, fallback: false }
