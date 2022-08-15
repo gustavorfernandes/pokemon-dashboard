@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
 import axios from "axios"
 import { useEffect, useState } from "react"
 
 type Pokemon = typeof initPokemon
+type Species = typeof initSpecies
 
 const initPokemon = {
   id: "",
@@ -24,12 +26,93 @@ const initPokemon = {
   }
 }
 
+const initSpecies = {
+  flavor_text_entries: [
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    },
+    {
+      flavor_text: ""
+    }
+  ]
+}
+
 function PokemonAbout(props: any) {
   const [data, setData] = useState<Pokemon>(initPokemon)
+  const [species, setSpecies] = useState<Species>(initSpecies)
   const slug = props.name
 
-  useEffect(() => {
-    axios({
+  async function getPokemonData() {
+    await axios({
       method: "get",
       url: `https://pokeapi.co/api/v2/pokemon/${slug}/`,
     }).then(function (response) {
@@ -39,10 +122,21 @@ function PokemonAbout(props: any) {
       console.log(error.data)
     })
 
-    return function cleanUp() {
-      setData(initPokemon)
-    }
-  }, [slug])
+    await axios({
+      method: "get",
+      url: `https://pokeapi.co/api/v2/pokemon-species/${slug}/`,
+    }).then(function (response) {
+      setSpecies(response.data)
+    }).catch(function (error) {
+      console.log(error.data)
+    })
+  }
+
+  useEffect(() => {
+    getPokemonData()
+    setData(initPokemon)
+    setSpecies(initSpecies)
+  }, [])
 
   function IDMask() {
     if (data) {
@@ -94,7 +188,7 @@ function PokemonAbout(props: any) {
 
           <div className="w-10/12 flex items-center justify-center mt-12">
             <p className="font-exo tracking-wide leading-7 text-neutral-800 text-lg">
-              Lorem ipsum dolor sit amet, cetur adipiscing elit. In id mollis consequat purus.
+              {species.flavor_text_entries[21].flavor_text}
             </p>
           </div>
 
