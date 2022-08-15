@@ -1,147 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
-import axios from "axios"
-import { useEffect, useState } from "react"
-
-type Pokemon = typeof initPokemon
-type Species = typeof initSpecies
-
-const initPokemon = {
-  id: "",
-  name: "",
-  types: [
-    {
-      type: {
-        name: ""
-      }
-    }
-  ],
-  sprites: {
-    other: {
-      ["official-artwork"]: {
-        "front_default": ""
-      }
-    }
-  }
-}
-
-const initSpecies = {
-  flavor_text_entries: [
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    },
-    {
-      flavor_text: ""
-    }
-  ]
-}
 
 function PokemonAbout(props: any) {
-  const [data, setData] = useState<Pokemon>(initPokemon)
-  const [species, setSpecies] = useState<Species>(initSpecies)
-  const slug = props.name
-
-  async function getPokemonData() {
-    await axios({
-      method: "get",
-      url: `https://pokeapi.co/api/v2/pokemon/${slug}/`,
-    }).then(function (response) {
-      setData(response.data)
-      console.log(response.data)
-    }).catch(function (error) {
-      console.log(error.data)
-    })
-
-    await axios({
-      method: "get",
-      url: `https://pokeapi.co/api/v2/pokemon-species/${slug}/`,
-    }).then(function (response) {
-      setSpecies(response.data)
-    }).catch(function (error) {
-      console.log(error.data)
-    })
-  }
-
-  useEffect(() => {
-    getPokemonData()
-    setData(initPokemon)
-    setSpecies(initSpecies)
-  }, [])
+  const pokemon = props.pokemon
 
   function IDMask() {
-    if (data) {
-      const pokeId = parseInt(data.id)
-      let idToString = `#${data.id}`
+    if (pokemon) {
+      const pokeId = parseInt(pokemon.id)
+      let idToString = `#${pokemon.id}`
 
       if (pokeId < 10) {
         idToString = `#00${pokeId}`
@@ -168,43 +35,39 @@ function PokemonAbout(props: any) {
   return (
     <div className="w-screen flex flex-col items-center justify-center">
 
-      {slug &&
-        <>
-          <div className="w-10/12 flex items-center justify-center gap-4 mb-6">
-            <h2 className="text-3xl text-neutral-800 capitalize font-exo mt-16">
-              {data.name}
-            </h2>
-            <span className="text-3xl text-neutral-600 capitalize font-exo mt-16">
-              {IDMask()}
-            </span>
-          </div>
+     <div className="w-10/12 flex items-center justify-center gap-4 mb-6">
+        <h2 className="text-3xl text-neutral-800 capitalize font-exo mt-16">
+          {pokemon.name}
+        </h2>
+        <span className="text-3xl text-neutral-600 capitalize font-exo mt-16">
+          {IDMask()}
+        </span>
+      </div>
 
-          <div className="flex flex-col w-10/12 bg-neutral-100 rounded-md p-3">
-            <img
-              src={data.sprites.other["official-artwork"].front_default}
-              alt={data.name}
-            />
-          </div>
+      <div className="flex flex-col w-10/12 bg-neutral-100 rounded-md p-3">
+        <img
+          src={pokemon.sprites.other["official-artwork"].front_default}
+          alt={pokemon.name}
+        />
+      </div>
 
-          <div className="w-10/12 flex items-center justify-center mt-12">
-            <p className="font-exo tracking-wide leading-7 text-neutral-800 text-lg">
-              {species.flavor_text_entries[21].flavor_text}
-            </p>
-          </div>
+      {/* <div className="w-10/12 flex items-center justify-center mt-12">
+        <p className="font-exo tracking-wide leading-7 text-neutral-800 text-lg">
+          {species.flavor_text_entries[21].flavor_text}
+        </p>
+      </div> */}
 
-          <div className="w-10/12 flex flex-col justify-start gap-4 my-8">
-            <span className="text-2xl font-exo text-neutral-700">
-              Type
-            </span>
+      <div className="w-10/12 flex flex-col justify-start gap-4 my-8">
+        <span className="text-2xl font-exo text-neutral-700">
+          Type
+        </span>
 
-            <div className="w-full flex gap-4">
-              {data.types.map((item) => (
-                toggleColor(item.type.name, item.type.name)
-              ))}
-            </div>
-          </div>
-        </>
-      }
+        <div className="w-full flex gap-4">
+          {pokemon.types.map((item: any) => (
+            toggleColor(item.type.name, item.type.name)
+          ))}
+        </div>
+      </div>
 
       <div className="w-10/12 flex items-center justify-center mt-4">
         <button className="w-full bg-green-600 hover:bg-green-700 py-2 rounded transition-all shadow-button text-white font-exo text-lg">
