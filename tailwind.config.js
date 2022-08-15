@@ -23,7 +23,7 @@ module.exports = {
         "fire": '#FD7D24',
         "water": '#4592C4',
         "grass": '#9BCC50',
-        "eletric": '#EED535',
+        "electric": '#EED535',
         "psychic": '#F366B9',
         "ice": '#51C4E7',
         "dragon": '#F16E57',
