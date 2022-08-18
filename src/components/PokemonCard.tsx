@@ -31,7 +31,7 @@ function PokemonCard(props: any) {
                 <Link href={`${item.entry_number}`}>
                   <a>
                     <img
-                      className="w-full"
+                      className="w-full hover:animate-oneTimeBounce"
                       src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.entry_number}.png`}
                       alt={item.pokemon_species.name}
                     />

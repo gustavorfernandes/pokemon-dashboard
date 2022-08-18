@@ -36,6 +36,15 @@ module.exports = {
       backgroundImage: {
         'bg': "url('/images/bg-gray.jpg')", 
       },
+      animation: {
+        oneTimeBounce: 'oneTimeBounce 0.25s'
+      },
+      keyframes: {
+        oneTimeBounce: {
+          '50%': { transform: 'translateY(-6px)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+      },
     },
   },
   plugins: [
