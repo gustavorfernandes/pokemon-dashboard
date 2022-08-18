@@ -7,8 +7,8 @@ import { useEffect, useState } from "react"
 
 function PokemonAbout(props: any) {
   const pokemon = props.pokemon
-  const [description, setDescription] = useState("")
 
+  const [description, setDescription] = useState("")
   async function getDescription() {
     const res = await axios.get(pokemon.species.url)
       .then((response) => {
@@ -18,6 +18,24 @@ function PokemonAbout(props: any) {
         console.log(error)
       })
     setDescription(res)
+  }
+
+  const [weakness, setWeakness] = useState([])
+
+  async function getWeakness() {
+    const pokeWeakness: any = []
+    pokemon.types.map((item: any) => {
+      const res = axios.get(item.type.url)
+        .then((response) => {
+          response.data.damage_relations.double_damage_from.map((type: any) => {
+            pokeWeakness.push(type.name)
+          })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    })
+    setWeakness(await pokeWeakness)
   }
 
   function IDMask() {
@@ -39,7 +57,7 @@ function PokemonAbout(props: any) {
     return (
       <span
         id={index}
-        className={`capitalize py-1 px-3 w-28 text-center rounded-xl font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
+        className={`capitalize py-1 px-3 w-[31.5%] text-center rounded-md font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
         key={index}
       >
         {type}
@@ -49,6 +67,7 @@ function PokemonAbout(props: any) {
 
   useEffect(() => {
     getDescription()
+    getWeakness()
   }, [])
 
   return (
@@ -102,20 +121,10 @@ function PokemonAbout(props: any) {
         />
       </div>
 
-      <div className="w-10/12 flex items-center justify-center mt-12">
-        <p className="font-exo tracking-wide leading-7 text-neutral-800 text-lg">
+      <div className="w-10/12 flex items-center justify-center mt-8">
+        <p className="font-exo tracking-wide leading-7 text-neutral-800 text-base">
           {description}
         </p>
-      </div>
-
-      <div className="w-10/12 flex flex-col justify-start gap-4 my-8">
-        <span className="text-2xl font-exo text-neutral-700">
-          Stats
-        </span>
-
-        <div className="w-full flex gap-4">
-         
-        </div>
       </div>
 
       <div className="w-10/12 flex flex-col justify-start gap-4 my-8">
@@ -123,11 +132,24 @@ function PokemonAbout(props: any) {
           Type
         </span>
 
-        <div className="w-full flex gap-4">
+        <div className="w-full flex gap-2">
           {pokemon.types.map((item: any) => (
             toggleColor(item.type.name, item.type.name)
           ))}
         </div>
+      </div>
+
+      <div className="w-10/12 flex flex-col justify-start gap-3 mb-8">
+        <span className="text-2xl font-exo text-neutral-700">
+          Weakness
+        </span>
+
+        <div className="w-full flex flex-wrap gap-2">
+          {weakness.map((type: string) => (
+            toggleColor(type, type)
+          ))}
+        </div>
+
       </div>
 
       <div className="w-10/12 flex items-center justify-center mt-4">
