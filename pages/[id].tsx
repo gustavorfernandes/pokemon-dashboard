@@ -36,6 +36,9 @@ export async function getStaticProps({ params }: any) {
     .catch((error) => {
       console.log(error)
     })
+
+
+    
   return { props: { pokemon } }
 }
 
