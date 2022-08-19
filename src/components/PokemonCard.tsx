@@ -1,16 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
+import { useState } from "react"
 
 function PokemonCard(props: any) {
-  const initialPokemons = props.pokemons
+  const [itensPerPage, setItensPerPage] = useState(20)
+  const [loading, setLoading] = useState(false)
+  const startIndex = 0 * itensPerPage
+  const endIndex = startIndex + itensPerPage
+  const pokemons = props.pokemons
+  const currentPokemons = pokemons.slice(startIndex, endIndex)
+
+  function loadMorePokemon() {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      setItensPerPage(itensPerPage + 20)
+    }, 1000)
+  }
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
-      {initialPokemons &&
-
-        initialPokemons.map((item: any, index: any) => {
-
+      {currentPokemons &&
+        currentPokemons.map((item: any, index: any) => {
           return (
             <div className="w-10/12 flex flex-col justify-center gap-2 font-exo select-none mb-4" key={index}>
 
@@ -42,15 +54,26 @@ function PokemonCard(props: any) {
           )
         })}
 
-      {/* <div className="flex flex-col gap-2 justify-center">
-        <span className="py-1 px-3 w-28 text-center bg-green-400 rounded-xl">
-          Grass
-        </span>
-        <span className="py-1 px-3 w-28 text-center bg-fuchsia-400 rounded-xl text-neutral-200">
-          Poison
-        </span>
-      </div> */}
+      <div className="w-10/12 flex items-center justify-center my-2">
+        <>
+        {itensPerPage < 151 && !loading &&
+          <button
+          className="w-full bg-sky-600 hover:bg-sky-700 py-2 rounded transition-all shadow-button text-white font-exo text-lg"
+          onClick={(e) => {
+            loadMorePokemon()
+          }}
+          >
+            Load more Pokémon
+          </button>
+        }
 
+        {loading &&
+          <span>
+            Carregando
+          </span>
+        }
+        </>
+      </div>
     </div>
   )
 }

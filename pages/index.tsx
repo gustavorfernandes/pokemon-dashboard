@@ -12,7 +12,8 @@ export async function getStaticProps(context: any) {
     })
     .catch((error) => {
       console.log(error)
-    })    
+    })   
+
   return {
     props: {
       pokemons
@@ -20,9 +21,7 @@ export async function getStaticProps(context: any) {
   }
 }
 
-const Home: NextPage = (props) => {
-  const { pokemons }: any = props
-
+const Home: NextPage = ({ pokemons }: any) => {
   return (
     <>
       <Head>

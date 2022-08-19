@@ -21,12 +21,6 @@ function PokemonList(props: any) {
         </div>
       </div>
       <PokemonCard pokemons={props.pokemons} />
-      <div className="w-10/12 flex items-center justify-center mt-12">
-        <button className="w-full bg-sky-600 hover:bg-sky-700 py-2 rounded transition-all shadow-button text-white font-exo text-lg">
-          Load more Pokémon
-        </button>
-      </div>
-
     </div>
   )
 }
