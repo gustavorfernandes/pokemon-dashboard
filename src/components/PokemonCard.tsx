@@ -2,9 +2,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
 import { useState } from "react"
+import Loading from "./Loading"
 
 function PokemonCard(props: any) {
-  const [itensPerPage, setItensPerPage] = useState(20)
+  const [itensPerPage, setItensPerPage] = useState(16)
   const [loading, setLoading] = useState(false)
   const startIndex = 0 * itensPerPage
   const endIndex = startIndex + itensPerPage
@@ -15,7 +16,7 @@ function PokemonCard(props: any) {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-      setItensPerPage(itensPerPage + 20)
+      setItensPerPage(itensPerPage + 16)
     }, 1000)
   }
 
@@ -68,9 +69,7 @@ function PokemonCard(props: any) {
         }
 
         {loading &&
-          <span>
-            Carregando
-          </span>
+          <Loading />
         }
         </>
       </div>
