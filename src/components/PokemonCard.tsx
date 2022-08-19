@@ -5,7 +5,7 @@ import { useState } from "react"
 import Loading from "./Loading"
 
 function PokemonCard(props: any) {
-  const [itensPerPage, setItensPerPage] = useState(16)
+  const [itensPerPage, setItensPerPage] = useState(15)
   const [loading, setLoading] = useState(false)
   const startIndex = 0 * itensPerPage
   const endIndex = startIndex + itensPerPage
@@ -16,8 +16,8 @@ function PokemonCard(props: any) {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-      setItensPerPage(itensPerPage + 16)
-    }, 1000)
+      setItensPerPage(itensPerPage + 15)
+    }, 250)
   }
 
   return (
@@ -55,25 +55,28 @@ function PokemonCard(props: any) {
           )
         })}
 
-      <div className="w-10/12 flex items-center justify-center my-2">
-        <>
-        {itensPerPage < 151 && !loading &&
+      {itensPerPage < 151 &&
+        <div className="w-10/12 flex items-center justify-center my-2 relative">
           <button
-          className="w-full bg-sky-600 hover:bg-sky-700 py-2 rounded transition-all shadow-button text-white font-exo text-lg"
-          onClick={(e) => {
-            loadMorePokemon()
-          }}
+            className="w-full bg-sky-600 hover:bg-sky-700 rounded transition-all shadow-button text-white font-exo text-lg h-12"
+            onClick={(e) => {
+              loadMorePokemon()
+            }}
           >
-            Load more Pokémon
+            {!loading &&
+              <span>
+                Load more Pokémon
+              </span>
+            }
           </button>
-        }
-
-        {loading &&
-          <Loading />
-        }
-        </>
-      </div>
-    </div>
+          {loading &&
+            <div className="absolute bottom-1">
+              <Loading />
+            </div>
+          }
+        </div>
+      }
+    </div >
   )
 }
 

@@ -5,9 +5,9 @@ function Loading({ type, color }: any) {
   return(
     <ReactLoading 
       type="cylon"
-      color="#0284C7"
-      height={50}
-      width={50}
+      color="#FFFFFF"
+      height={40}
+      width={40}
     />    
   )
 }
