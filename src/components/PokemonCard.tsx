@@ -28,7 +28,7 @@ function PokemonCard(props: any) {
               </div>
 
               <div className="w-full bg-neutral-100 p-8 rounded-lg flex items-center justify-center mb-2">
-                <Link href={`${item.entry_number}`}>
+                <Link href={`/${item.entry_number}`}>
                   <a>
                     <img
                       className="w-full hover:animate-oneTimeBounce"

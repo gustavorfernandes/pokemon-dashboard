@@ -29,7 +29,7 @@ function PokemonAbout(props: any) {
     return (
       <span
         id={index}
-        className={`capitalize py-1 px-3 w-[31.5%] text-center rounded-md font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
+        className={`capitalize py-1 px-3 w-[31.5%] text-center shadow-tag rounded-md font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
         key={index}
       >
         {type}
@@ -40,7 +40,6 @@ function PokemonAbout(props: any) {
   function filterWeakness(type: string, index: string) {
     if (!weaknessNoDuplicates.toString().includes(type)) {
       weaknessNoDuplicates.push(type)
-      console.log(weaknessNoDuplicates)
     }
   }
 
@@ -52,7 +51,7 @@ function PokemonAbout(props: any) {
       return (
         <span
           id={index}
-          className={`capitalize py-1 px-3 w-[31.5%] text-center rounded-md font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
+          className={`capitalize py-1 px-3 w-[31.5%] text-center shadow-tag rounded-md font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
           key={index}
         >
           {type}
@@ -68,26 +67,26 @@ function PokemonAbout(props: any) {
           <div className="w-6/12 flex items-center">
             {pokemon.id >= 2 &&
               <div className="bg-neutral-200 rounded-lg shadow-button hover:scale-110 transition-all">
-                <button className="rounded-lg p-2 flex justify-center items-center" onClick={() => {
-                  window.location.href = `${parseInt(pokemon.id) - 1}`
-                }}>
-                  <CaretLeft
-                    size={18}
-                  />
-                </button>
+                <Link href={`/${pokemon.id - 1}`}>
+                  <a className="rounded-lg p-2 flex justify-center items-center">
+                    <CaretLeft
+                      size={18}
+                    />
+                  </a>
+                </Link>
               </div>
             }
           </div>
           <div className="w-6/12 flex items-center justify-end">
             {pokemon.id <= 150 &&
               <div className="bg-neutral-200 rounded-lg shadow-button hover:scale-110 transition-all">
-                <button className="rounded-lg p-2 flex justify-center items-center" onClick={() => {
-                  window.location.href = `${parseInt(pokemon.id) + 1}`
-                }}>
-                  <CaretRight
-                    size={18}
-                  />
-                </button>
+                <Link href={`/${pokemon.id + 1}`}>
+                  <a className="rounded-lg p-2 flex justify-center items-center">
+                    <CaretRight
+                      size={18}
+                    />
+                  </a>
+                </Link>
               </div>
             }
           </div>
@@ -136,8 +135,8 @@ function PokemonAbout(props: any) {
         </span>
 
         {weakness.map((type: string) => (
-            filterWeakness(type, type)
-          ))}
+          filterWeakness(type, type)
+        ))}
 
         <div className="w-full flex flex-wrap gap-2">
           {weaknessNoDuplicates.map((type: string) => (
