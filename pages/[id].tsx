@@ -2,10 +2,10 @@ import Footer from "../src/patterns/Footer"
 import PokemonAbout from "../src/patterns/PokemonAbout"
 import axios from "axios"
 
-const Pokemon = ({ pokemon, description, weakness }: any) => {
+const Pokemon = ({ pokemon, description, strength, weakness }: any) => {
   return (
     <>
-      <PokemonAbout pokemon={pokemon} description={description} weakness={weakness} />
+      <PokemonAbout pokemon={pokemon} description={description} strength={strength} weakness={weakness} />
 
       <Footer />
     </>
@@ -45,6 +45,28 @@ export async function getStaticProps({ params }: any) {
       console.log(error)
     })
 
+  const strength: string[] = []
+  await Promise.all(pokemon.types.map(async (item: any) => {    
+    await axios.get(item.type.url)
+      .then((response) => {
+        response.data.damage_relations.half_damage_from.map((type: any) => {
+          strength.push(type.name)
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    await axios.get(item.type.url)
+      .then((response) => {
+        response.data.damage_relations.no_damage_from.map((type: any) => {
+          strength.push(type.name)
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }))
+
   const weakness: string[] = []
   await Promise.all(pokemon.types.map(async (item: any) => {
     await axios.get(item.type.url)
@@ -58,7 +80,7 @@ export async function getStaticProps({ params }: any) {
       })
   }))
 
-  return { props: { pokemon, description, weakness } }
+  return { props: { pokemon, description, strength, weakness } }
 }
 
 export default Pokemon

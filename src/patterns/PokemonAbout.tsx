@@ -5,10 +5,10 @@ import { CaretRight, CaretLeft } from "phosphor-react"
 
 function PokemonAbout(props: any) {
   const pokemon = props.pokemon
-  const description = props.description  
-  const weakness = props.weakness 
-
-  console.log(weakness)
+  const description = props.description
+  const strength = props.strength
+  const weakness = props.weakness
+  const weaknessNoDuplicates: string[] = []
 
   function IDMask() {
     if (pokemon) {
@@ -24,7 +24,7 @@ function PokemonAbout(props: any) {
     }
   }
 
-  function toggleColor(type: string, index: string) {
+  function toggleType(type: string, index: string) {
     const tagColor = type
     return (
       <span
@@ -35,7 +35,31 @@ function PokemonAbout(props: any) {
         {type}
       </span>
     )
-  } 
+  }
+
+  function filterWeakness(type: string, index: string) {
+    if (!weaknessNoDuplicates.toString().includes(type)) {
+      weaknessNoDuplicates.push(type)
+      console.log(weaknessNoDuplicates)
+    }
+  }
+
+  function toggleWeakness(type: string, index: string) {
+    const tagColor = type
+    const strStrength = strength.toString()
+
+    if (!strStrength.includes(tagColor)) {
+      return (
+        <span
+          id={index}
+          className={`capitalize py-1 px-3 w-[31.5%] text-center rounded-md font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
+          key={index}
+        >
+          {type}
+        </span>
+      )
+    }
+  }
 
   return (
     <div className="w-screen flex flex-col items-center justify-center">
@@ -101,7 +125,7 @@ function PokemonAbout(props: any) {
 
         <div className="w-full flex gap-2">
           {pokemon.types.map((item: any) => (
-            toggleColor(item.type.name, item.type.name)
+            toggleType(item.type.name, item.type.name)
           ))}
         </div>
       </div>
@@ -111,12 +135,15 @@ function PokemonAbout(props: any) {
           Weakness
         </span>
 
+        {weakness.map((type: string) => (
+            filterWeakness(type, type)
+          ))}
+
         <div className="w-full flex flex-wrap gap-2">
-          {weakness.map((type: string) => (
-            toggleColor(type, type)
+          {weaknessNoDuplicates.map((type: string) => (
+            toggleWeakness(type, type)
           ))}
         </div>
-
       </div>
 
       <div className="w-10/12 flex items-center justify-center mt-4">
