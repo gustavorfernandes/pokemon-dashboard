@@ -1,42 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import axios from "axios"
 import Link from "next/link"
 import { CaretRight, CaretLeft } from "phosphor-react"
-import { useEffect, useState } from "react"
 
 function PokemonAbout(props: any) {
   const pokemon = props.pokemon
+  const description = props.description  
+  const weakness = props.weakness 
 
-  const [description, setDescription] = useState("")
-  async function getDescription() {
-    const res = await axios.get(pokemon.species.url)
-      .then((response) => {
-        return response.data.flavor_text_entries[10].flavor_text
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-    setDescription(res)
-  }
-
-  const [weakness, setWeakness] = useState([])
-
-  async function getWeakness() {
-    const pokeWeakness: any = []
-    pokemon.types.map((item: any) => {
-      const res = axios.get(item.type.url)
-        .then((response) => {
-          response.data.damage_relations.double_damage_from.map((type: any) => {
-            pokeWeakness.push(type.name)
-          })
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    })
-    setWeakness(await pokeWeakness)
-  }
+  console.log(weakness)
 
   function IDMask() {
     if (pokemon) {
@@ -63,12 +35,7 @@ function PokemonAbout(props: any) {
         {type}
       </span>
     )
-  }
-
-  useEffect(() => {
-    getDescription()
-    getWeakness()
-  }, [])
+  } 
 
   return (
     <div className="w-screen flex flex-col items-center justify-center">
