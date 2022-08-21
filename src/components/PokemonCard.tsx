@@ -3,25 +3,51 @@
 import Link from "next/link"
 import { useState } from "react"
 import Loading from "./Loading"
+import { useContext } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
 
 function PokemonCard(props: any) {
-  const [itensPerPage, setItensPerPage] = useState(15)
+  const { pokemonList }: any = useContext(GlobalContext)
+  const [itensPerPage, setItensPerPage] = useState(12)
   const [loading, setLoading] = useState(false)
   const startIndex = 0 * itensPerPage
   const endIndex = startIndex + itensPerPage
-  const pokemons = props.pokemons
+  const pokemons = pokemonList
   const currentPokemons = pokemons.slice(startIndex, endIndex)
 
   function loadMorePokemon() {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-      setItensPerPage(itensPerPage + 15)
+      setItensPerPage(itensPerPage + 12)
     }, 250)
   }
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
+      <div className="w-10/12 flex flex-col justify-center mb-8">
+        <span className="text-neutral-500 font-exo mb-1">
+          Sort by
+        </span>
+        <div className="bg-neutral-800 flex items-center justify-center rounded text-white relative">
+          <select className="w-full bg-transparent p-2 rounded outline-none">
+            <option className="bg-neutral-700">
+              Lowest Number (First)
+            </option>
+            <option className="bg-neutral-700 flex items-center justify-center">
+                Highest Number (First)            
+            </option>
+            <option className="bg-neutral-700">
+              A-Z
+            </option>
+            <option className="bg-neutral-700">
+              Z-A
+            </option>
+          </select>
+
+        </div>
+      </div>
+
       {currentPokemons &&
         currentPokemons.map((item: any, index: any) => {
           return (

@@ -4,16 +4,18 @@ import Footer from "../src/patterns/Footer"
 import Header from "../src/patterns/Header"
 import PokemonList from "../src/patterns/PokemonList"
 import axios from "axios"
+import { useContext } from "react"
+import { GlobalContext } from "../src/contexts/GlobalContext"
 
 export async function getStaticProps(context: any) {
+  
   const pokemons = await axios.get("https://pokeapi.co/api/v2/pokedex/2/")
     .then((response) => {
       return response.data.pokemon_entries
     })
     .catch((error) => {
       console.log(error)
-    })   
-
+    })
   return {
     props: {
       pokemons
@@ -22,6 +24,9 @@ export async function getStaticProps(context: any) {
 }
 
 const Home: NextPage = ({ pokemons }: any) => {
+  const { setPokemonList }: any = useContext(GlobalContext)
+  setPokemonList(pokemons)
+  
   return (
     <>
       <Head>
