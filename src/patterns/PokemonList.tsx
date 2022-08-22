@@ -31,7 +31,7 @@ function PokemonList(props: any) {
   return (
     <div
       className="w-screen flex flex-col items-center justify-center">
-      <div className="w-10/12 flex flex-col items-center justify-center mt-8">
+      <div className="w-10/12 flex flex-col items-center justify-center mt-4">
         <div className="w-screen bg-neutral-800 py-4 mb-8 flex flex-col items-center justify-center gap-4">
           <div className="w-10/12 flex flex-col justify-center">
             <h1 className="w-9/12 font-exo font-light text-3xl text-neutral-100 mb-2">
@@ -52,9 +52,9 @@ function PokemonList(props: any) {
         {scrollDown &&
           <motion.div
             className="fixed flex items-center justify-center w-16 h-16 bg-neutral-500 bottom-0 right-0 rounded-tl-md opacity-70 z-10 text-white shadow-button"
-            initial={{  y: 250 }}
+            initial={{  y: 150 }}
             animate={{ y: 0 }}
-            exit={{ y: 250 }}
+            exit={{ y: 150 }}
             transition={{ duration: 0.3 }}
           >
               <button className="">
