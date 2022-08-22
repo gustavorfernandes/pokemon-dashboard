@@ -11,9 +11,3 @@ html {
 body {  
   -webkit-font-smoothing: antialiased;  
 }
-
-* select { 
-  -moz-appearance:none; /* Firefox */
-  -webkit-appearance:none; /* Safari and Chrome */
-  appearance:none;
-}

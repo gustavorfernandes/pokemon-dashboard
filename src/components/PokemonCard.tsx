@@ -1,10 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
-import { useState } from "react"
 import Loading from "./Loading"
-import { useContext } from "react"
+import { useContext, useState, Fragment } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
+import { CaretDown, Check } from "phosphor-react"
+import { Listbox } from "@headlessui/react"
+
+const options = [
+  { id: 1, name: 'Lowest Number (First)', unavailable: false },
+  { id: 2, name: 'Highest Number (First)', unavailable: false },
+  { id: 3, name: 'A-Z', unavailable: false },
+  { id: 4, name: 'Z-A', unavailable: false }
+]
 
 function PokemonCard(props: any) {
   const { pokemonList }: any = useContext(GlobalContext)
@@ -14,6 +22,7 @@ function PokemonCard(props: any) {
   const endIndex = startIndex + itensPerPage
   const pokemons = pokemonList
   const currentPokemons = pokemons.slice(startIndex, endIndex)
+  const [selectedList, setSelectedList] = useState(options[0])
 
   function loadMorePokemon() {
     setLoading(true)
@@ -26,29 +35,57 @@ function PokemonCard(props: any) {
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <div className="w-10/12 flex flex-col justify-center mb-8">
-        <span className="text-neutral-500 font-exo mb-1">
+        <span className="text-neutral-500 font-exo font-bold mb-1">
           Sort by
         </span>
-        <div className="bg-neutral-800 flex items-center justify-center rounded text-white relative">
-          <select className="w-full bg-transparent p-2 rounded outline-none">
-            <option className="bg-neutral-700">
-              Lowest Number (First)
-            </option>
-            <option className="bg-neutral-700 flex items-center justify-center">
-                Highest Number (First)            
-            </option>
-            <option className="bg-neutral-700">
-              A-Z
-            </option>
-            <option className="bg-neutral-700">
-              Z-A
-            </option>
-          </select>
+        <div className="w-full text-white font-exo ">
+          <Listbox value={selectedList} onChange={setSelectedList}>
+            <div className="relative mt-1 ">
+              <Listbox.Button className="relative  w-full cursor-default rounded-md bg-neutral-800 py-3 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+                <span className="block truncate ">{selectedList.name}</span>
+                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 ">
+                  <CaretDown
+                    className="h-5 w-5 text-white"
+                    aria-hidden="true"
+                  />
+                </span>
+              </Listbox.Button>
 
+              <Listbox.Options className="absolute max-h-60 w-full overflow-auto rounded-bl-md rounded-br-md bg-neutral-700 -mt-[2px] text-base font-light shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                {options.map((item, index) => (
+                  <Listbox.Option
+                    key={index}
+                    className={({ active }) =>
+                      `relative cursor-default font-light select-none py-2 pl-10 pr-4 ${active ? 'bg-neutral-800' : 'text-white'
+                      }`
+                    }
+                    value={item}
+                  >
+                    {({ selected }) => (
+                      <>
+                        <span
+                          className={`block truncate ${selected ? 'font-light' : 'font-light'
+                            }`}
+                        >
+                          {item.name}
+                        </span>
+                        {selected ? (
+                          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white">
+                            <Check className="h-5 w-5" aria-hidden="true" />
+                          </span>
+                        ) : null}
+                      </>
+                    )}
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
+            </div>
+          </Listbox>
         </div>
       </div>
 
-      {currentPokemons &&
+      {
+        currentPokemons &&
         currentPokemons.map((item: any, index: any) => {
           return (
             <div className="w-10/12 flex flex-col justify-center gap-2 font-exo select-none mb-4" key={index}>
@@ -79,9 +116,11 @@ function PokemonCard(props: any) {
               </div>
             </div>
           )
-        })}
+        })
+      }
 
-      {itensPerPage < 151 &&
+      {
+        itensPerPage < 151 &&
         <div className="w-10/12 flex items-center justify-center my-2 relative">
           <button
             className="w-full bg-sky-600 hover:bg-sky-700 rounded transition-all shadow-button text-white font-exo text-lg h-12"
