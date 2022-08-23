@@ -39,7 +39,7 @@ function PokemonCard(props: any) {
   pokemonsReduce = pokemonsReduce.sort((a: any, b: any) => {
     return a[filterOrder] < b[filterOrder] ? -order : order
   })
-  
+
   const startIndex = 0 * itensPerPage
   const endIndex = startIndex + itensPerPage
   const currentPokemons = pokemonsReduce.slice(startIndex, endIndex)
@@ -148,7 +148,7 @@ function PokemonCard(props: any) {
       })
       }
 
-      {pokemons.length >= currentPokemons.length &&
+      {pokemons.length >= currentPokemons.length && pokemons.length > 0 &&
         <div className="w-10/12 flex items-center justify-center my-2 relative">
           <button
             className="w-full bg-sky-600 hover:bg-sky-700 rounded transition-all shadow-button text-white font-exo text-lg h-12"
@@ -167,6 +167,12 @@ function PokemonCard(props: any) {
               <Loading />
             </div>
           }
+        </div>
+      }
+
+      {pokemons.length === 0 &&
+        <div className="w-10/12 border-2 border-red-500 rounded-md flex items-center justify-center p-3 select-none text-neutral-600 font-exo">
+          No Pokémon Matched Your Search!
         </div>
       }
     </div >

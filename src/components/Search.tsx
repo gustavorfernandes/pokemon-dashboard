@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 function Search(props: any) {
-  const initialList = props.pokemons 
+  const initialList = props.pokemons
 
   const { pokemonList, setCurrentPokemonList, setItensPerPage }: any = useContext(GlobalContext)
   const [search, setSearch] = useState("")
@@ -19,7 +19,7 @@ function Search(props: any) {
   }, [])
 
   return (
-    <form onSubmit={(event) => {      
+    <form onSubmit={(event) => {
       const currentList = submitSearch(event)
       setCurrentPokemonList(currentList)
       setItensPerPage(12)
@@ -31,13 +31,15 @@ function Search(props: any) {
             value={search}
             name="search"
             type="text"
-            onChange={event => setSearch(event.target.value)}
-            placeholder="Name or number"
-            onBlur={(event) => {             
-              const currentList = submitSearch(event)
-              setCurrentPokemonList(currentList)
-              setItensPerPage(12)
+            onChange={(event) => {
+              setSearch(event.target.value)
+              if (event.target.value === "") {
+                const currentList = submitSearch(event)
+                setCurrentPokemonList(currentList)
+                setItensPerPage(12)
+              }
             }}
+            placeholder="Name or number"
           />
           <label
             htmlFor="search"
