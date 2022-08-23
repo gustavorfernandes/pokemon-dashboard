@@ -2,8 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
 import Loading from "./Loading"
-import { useContext, useState, Fragment } from "react"
-import { GlobalContext } from "../contexts/GlobalContext"
+import { useState } from "react"
 import { CaretDown, Check } from "phosphor-react"
 import { Listbox } from "@headlessui/react"
 
@@ -15,14 +14,12 @@ const options = [
 ]
 
 function PokemonCard(props: any) {
-  const { pokemonList }: any = useContext(GlobalContext)
-  const [itensPerPage, setItensPerPage] = useState(12)
+  const pokemons = props.pokemons
   const [loading, setLoading] = useState(false)
-  const startIndex = 0 * itensPerPage
-  const endIndex = startIndex + itensPerPage
-  const pokemons = pokemonList
-  const currentPokemons = pokemons.slice(startIndex, endIndex)
-  const [selectedList, setSelectedList] = useState(options[0])
+  const [selectList, setSelectList] = useState(options[0])
+
+  const [order, setOrder] = useState(1)
+  const [filterOrder, setFilterOrder] = useState("number")
 
   function loadMorePokemon() {
     setLoading(true)
@@ -32,6 +29,20 @@ function PokemonCard(props: any) {
     }, 250)
   }
 
+  let pokemonsReduce = pokemons.reduce((pokemonsReduce: any, currentPokemon: any) => {
+    pokemonsReduce[currentPokemon.entry_number] = { number: currentPokemon.entry_number, name: currentPokemon.pokemon_species.name }
+    return pokemonsReduce
+  }, [])
+
+  pokemonsReduce = pokemonsReduce.sort((a: any, b: any) => {
+    return a[filterOrder] < b[filterOrder] ? -order : order
+  })
+
+  const [itensPerPage, setItensPerPage] = useState(12)
+  const startIndex = 0 * itensPerPage
+  const endIndex = startIndex + itensPerPage
+  const currentPokemons = pokemonsReduce.slice(startIndex, endIndex) 
+
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <div className="w-10/12 flex flex-col justify-center mb-8">
@@ -39,10 +50,25 @@ function PokemonCard(props: any) {
           Sort by
         </span>
         <div className="w-full text-white font-exo ">
-          <Listbox value={selectedList} onChange={setSelectedList}>
+          <Listbox value={selectList} onChange={(e) => {
+            if (e.id === 1) {
+              setOrder(1)
+              setFilterOrder("number")
+            } else if (e.id === 2) {
+              setOrder(-1)
+              setFilterOrder("number")
+            } else if (e.id === 3) {
+              setOrder(1)
+              setFilterOrder("name")
+            } else if (e.id === 4) {
+              setOrder(-1)
+              setFilterOrder("name")
+            }
+            setSelectList(e)
+          }}>
             <div className="relative mt-1 ">
               <Listbox.Button className="relative  w-full cursor-default rounded-md bg-neutral-800 py-3 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm font-light">
-                <span className="block truncate ">{selectedList.name}</span>
+                <span className="block truncate ">{selectList.name}</span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 ">
                   <CaretDown
                     className="h-5 w-5 text-white"
@@ -84,39 +110,37 @@ function PokemonCard(props: any) {
         </div>
       </div>
 
-      {
-        currentPokemons &&
-        currentPokemons.map((item: any, index: any) => {
-          return (
-            <div className="w-10/12 flex flex-col justify-center gap-2 font-exo select-none mb-4" key={index}>
+      {currentPokemons.map((pokemon: any) => {
+        return (
+          <div className="w-10/12 flex flex-col justify-center gap-2 font-exo select-none mb-4" key={pokemon.number}>
 
-              <div className="w-full flex items-center justify-between">
-                <div className="flex flex-col justify-center">
-                  <span className="self-start text-neutral-500 font-bold">
-                    {item.entry_number < 10 && `n 00${item.entry_number}`}
-                    {item.entry_number >= 10 && item.entry_number < 100 && `n 0${item.entry_number}`}
-                    {item.entry_number >= 100 && `n ${item.entry_number}`}
-                  </span>
-                  <h2 className="capitalize text-3xl text-neutral-800 font-bold">
-                    {item.pokemon_species.name}
-                  </h2>
-                </div>
-              </div>
-
-              <div className="w-full bg-neutral-100 p-8 rounded-lg flex items-center justify-center mb-2">
-                <Link href={`/${item.entry_number}`}>
-                  <a>
-                    <img
-                      className="w-full hover:animate-oneTimeBounce"
-                      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.entry_number}.png`}
-                      alt={item.pokemon_species.name}
-                    />
-                  </a>
-                </Link>
+            <div className="w-full flex items-center justify-between">
+              <div className="flex flex-col justify-center">
+                <span className="self-start text-neutral-500 font-bold">
+                  {pokemon.number < 10 && `n 00${pokemon.number}`}
+                  {pokemon.number >= 10 && pokemon.number < 100 && `n 0${pokemon.number}`}
+                  {pokemon.number >= 100 && `n ${pokemon.number}`}
+                </span>
+                <h2 className="capitalize text-3xl text-neutral-800 font-bold">
+                  {pokemon.name}
+                </h2>
               </div>
             </div>
-          )
-        })
+
+            <div className="w-full bg-neutral-100 p-8 rounded-lg flex items-center justify-center mb-2">
+              <Link href={`/${pokemon.number}`}>
+                <a>
+                  <img
+                    className="w-full hover:animate-oneTimeBounce"
+                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.number}.png`}
+                    alt={pokemon.name}
+                  />
+                </a>
+              </Link>
+            </div>
+          </div>
+        )
+      })
       }
 
       {

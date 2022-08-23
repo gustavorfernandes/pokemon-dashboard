@@ -1,15 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import { GoSearch } from "@react-icons/all-files/go/GoSearch"
 import { AnimatePresence, motion } from "framer-motion"
-import { Squash as Hamburger } from "hamburger-react"
-import { CaretLeft, CaretRight, Funnel, FunnelSimple } from "phosphor-react"
+import { CaretLeft, FunnelSimple } from "phosphor-react"
 import { useState } from "react"
 
 function Header() {
   const [isOpen, setOpen] = useState(false)
+  const [filter, setFilter] = useState("")
 
   function toggleMenu() {
     setOpen(!isOpen)
+  }
+
+  function toggleTag(type: string) {
+    const filterType = type
+    setFilter(filterType)
   }
 
   return (
@@ -22,22 +27,22 @@ function Header() {
             alt="Pokémon Logo"
           />
 
-          <button 
-          className="font-bold text-neutral-800 flex items-center -justify-center"
-          onClick={toggleMenu}
+          <button
+            className="font-bold text-neutral-800 flex items-center -justify-center"
+            onClick={toggleMenu}
           >
             <FunnelSimple
-            className="bg-neutral-200 rounded-md shadow-button hover:scale-105 transition-all p-[10px] w-11 h-11"
-            size={30}
-            weight="bold"
-            />            
+              className="bg-neutral-200 rounded-md shadow-button hover:scale-105 transition-all p-[10px] w-11 h-11"
+              size={30}
+              weight="bold"
+            />
           </button>
         </div>
       </div>
 
       <AnimatePresence>
         {isOpen &&
-          
+
 
           <motion.div
             className="bg-neutral-700 flex flex-col items-center fixed rounded-sm w-[88%] sm:w-7/12 sm:max-w-[380px] z-20 right-0 inset-y-0 shadow-button select-none"
@@ -69,15 +74,18 @@ function Header() {
               </div>
 
               <div className="w-full flex items-center justify-center mt-10 mb-4 bg-neutral-700">
-                <div className="w-10/12 flex flex-col justify-center items-center">
+                <div className="w-10/12 flex flex-col justify-center">
                   <span className="font-light text-2xl font-exo text-neutral-100">
                     Filter by Type
+                  </span>
+                  <span className="font-light text-xs font-exo text-neutral-200 mt-1">
+                    T = Type
                   </span>
                 </div>
 
               </div>
 
-              <div className="w-10/12 flex items-center justify-between mt-4 font-exo text-2xl gap-2">
+              <div className="w-10/12 flex items-center justify-between mt-2 font-exo text-2xl gap-2">
                 <div className="w-6/12 flex flex-col justify-center items-center gap-2">
                   <div className="flex items-center w-full gap-2">
                     <span
@@ -85,7 +93,16 @@ function Header() {
                     >
                       Bug
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "bug") {
+                          toggleTag("")
+                        } else {
+                        toggleTag("bug")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "bug" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>

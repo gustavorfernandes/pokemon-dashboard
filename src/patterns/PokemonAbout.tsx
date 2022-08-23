@@ -62,11 +62,11 @@ function PokemonAbout(props: any) {
 
   return (
     <div className="w-screen flex flex-col items-center justify-center">
-      <div className="bg-bg bg-cover h-full w-screen flex items-center justify-center">
+      <div className="bg-neutral-800 h-full w-screen flex items-center justify-center">
         <div className="w-10/12 flex items-center justify-between py-6">
           <div className="w-6/12 flex items-center">
             {pokemon.id >= 2 &&
-              <div className="bg-neutral-200 rounded-lg shadow-button hover:scale-110 transition-all">
+              <div className="bg-neutral-200 rounded-lg shadow-button hover:scale-105 transition-all">
                 <Link href={`/${pokemon.id - 1}`}>
                   <a className="rounded-lg p-2 flex justify-center items-center">
                     <CaretLeft
@@ -79,7 +79,7 @@ function PokemonAbout(props: any) {
           </div>
           <div className="w-6/12 flex items-center justify-end">
             {pokemon.id <= 150 &&
-              <div className="bg-neutral-200 rounded-lg shadow-button hover:scale-110 transition-all">
+              <div className="bg-neutral-200 rounded-lg shadow-button hover:scale-105 transition-all">
                 <Link href={`/${pokemon.id + 1}`}>
                   <a className="rounded-lg p-2 flex justify-center items-center">
                     <CaretRight
