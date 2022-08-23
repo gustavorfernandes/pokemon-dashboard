@@ -1,16 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { GoSearch } from "@react-icons/all-files/go/GoSearch"
-import React, { useState } from "react"
+import { useState, useContext, useEffect } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
 
-function Search() {
+function Search(props: any) {
+  const initialList = props.pokemons 
+
+  const { pokemonList, setCurrentPokemonList, setItensPerPage }: any = useContext(GlobalContext)
   const [search, setSearch] = useState("")
 
   function submitSearch(event: React.FormEvent) {
     event.preventDefault()
-    setSearch("")
+    return pokemonList.filter((item: any) => item.pokemon_species.name.includes(search.toLowerCase()))
   }
 
+  useEffect(() => {
+    setCurrentPokemonList(initialList)
+  }, [])
+
   return (
-    <form onSubmit={submitSearch}>
+    <form onSubmit={(event) => {      
+      const currentList = submitSearch(event)
+      setCurrentPokemonList(currentList)
+      setItensPerPage(12)
+    }}>
       <fieldset>
         <div className="w-full flex items-center justify-center gap-2 mb-4">
           <input
@@ -20,8 +33,13 @@ function Search() {
             type="text"
             onChange={event => setSearch(event.target.value)}
             placeholder="Name or number"
+            onBlur={(event) => {             
+              const currentList = submitSearch(event)
+              setCurrentPokemonList(currentList)
+              setItensPerPage(12)
+            }}
           />
-          <label            
+          <label
             htmlFor="search"
           />
 

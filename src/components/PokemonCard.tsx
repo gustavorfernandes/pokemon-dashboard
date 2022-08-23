@@ -2,9 +2,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
 import Loading from "./Loading"
-import { useState } from "react"
 import { CaretDown, Check } from "phosphor-react"
 import { Listbox } from "@headlessui/react"
+import { useState, useContext } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
 
 const options = [
   { id: 1, name: 'Lowest Number (First)', unavailable: false },
@@ -14,7 +15,8 @@ const options = [
 ]
 
 function PokemonCard(props: any) {
-  const pokemons = props.pokemons
+  const { currentPokemonList, itensPerPage, setItensPerPage }: any = useContext(GlobalContext)
+  const pokemons = currentPokemonList
   const [loading, setLoading] = useState(false)
   const [selectList, setSelectList] = useState(options[0])
 
@@ -37,11 +39,10 @@ function PokemonCard(props: any) {
   pokemonsReduce = pokemonsReduce.sort((a: any, b: any) => {
     return a[filterOrder] < b[filterOrder] ? -order : order
   })
-
-  const [itensPerPage, setItensPerPage] = useState(12)
+  
   const startIndex = 0 * itensPerPage
   const endIndex = startIndex + itensPerPage
-  const currentPokemons = pokemonsReduce.slice(startIndex, endIndex) 
+  const currentPokemons = pokemonsReduce.slice(startIndex, endIndex)
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
@@ -54,15 +55,19 @@ function PokemonCard(props: any) {
             if (e.id === 1) {
               setOrder(1)
               setFilterOrder("number")
+              setItensPerPage(12)
             } else if (e.id === 2) {
               setOrder(-1)
               setFilterOrder("number")
+              setItensPerPage(12)
             } else if (e.id === 3) {
               setOrder(1)
               setFilterOrder("name")
+              setItensPerPage(12)
             } else if (e.id === 4) {
               setOrder(-1)
               setFilterOrder("name")
+              setItensPerPage(12)
             }
             setSelectList(e)
           }}>
@@ -115,11 +120,11 @@ function PokemonCard(props: any) {
           <div className="w-10/12 flex flex-col justify-center gap-2 font-exo select-none mb-4" key={pokemon.number}>
 
             <div className="w-full flex items-center justify-between">
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center leading-7">
                 <span className="self-start text-neutral-500 font-bold">
-                  {pokemon.number < 10 && `n 00${pokemon.number}`}
-                  {pokemon.number >= 10 && pokemon.number < 100 && `n 0${pokemon.number}`}
-                  {pokemon.number >= 100 && `n ${pokemon.number}`}
+                  {pokemon.number < 10 && `nº 00${pokemon.number}`}
+                  {pokemon.number >= 10 && pokemon.number < 100 && `nº 0${pokemon.number}`}
+                  {pokemon.number >= 100 && `nº ${pokemon.number}`}
                 </span>
                 <h2 className="capitalize text-3xl text-neutral-800 font-bold">
                   {pokemon.name}
@@ -143,8 +148,7 @@ function PokemonCard(props: any) {
       })
       }
 
-      {
-        itensPerPage < 151 &&
+      {pokemons.length >= currentPokemons.length &&
         <div className="w-10/12 flex items-center justify-center my-2 relative">
           <button
             className="w-full bg-sky-600 hover:bg-sky-700 rounded transition-all shadow-button text-white font-exo text-lg h-12"
