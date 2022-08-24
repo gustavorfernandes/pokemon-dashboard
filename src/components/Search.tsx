@@ -33,14 +33,7 @@ function Search(props: any) {
             value={search}
             name="search"
             type="text"
-            onChange={(event) => {
-              setSearch(event.target.value)
-              if (event.target.value === "") {
-                const currentList = submitSearch(event)
-                setCurrentPokemonList(currentList)
-                setItensPerPage(12)
-              }
-            }}
+            onChange={(event) => setSearch(event.target.value)}
             placeholder="Name or number"
           />
           <label
