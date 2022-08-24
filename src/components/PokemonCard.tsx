@@ -171,8 +171,23 @@ function PokemonCard(props: any) {
       }
 
       {pokemons.length === 0 &&
-        <div className="w-10/12 border-2 border-red-500 rounded-md flex items-center justify-center p-3 select-none text-neutral-600 font-exo">
-          No Pokémon Matched Your Search!
+        <div className="w-full border-2 border-red-500 rounded-md flex flex-col items-center justify-center p-2 select-none font-exo gap-2">
+          <span className="text-red-600 text-lg">
+            No Pokémon Matched Your Search!
+          </span>
+          <span className="text-neutral-500 font-bold">
+            Try these suggestions:
+          </span>
+          <div className="text-neutral-500">
+            <ul className="flex flex-col items-center justify-center gap-1 text-sm text-center">
+              <li className="list-disc">
+                Reduce the number of search parameters
+              </li>
+              <li className="list-disc">
+                Search for only one Pokémon type at a time
+              </li>
+            </ul>
+          </div>
         </div>
       }
     </div >

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { GoSearch } from "@react-icons/all-files/go/GoSearch"
 import { AnimatePresence, motion } from "framer-motion"
-import { CaretLeft, FunnelSimple } from "phosphor-react"
+import { CaretLeft, X, FunnelSimple } from "phosphor-react"
 import { useState } from "react"
 
 function Header() {
@@ -45,7 +45,7 @@ function Header() {
 
 
           <motion.div
-            className="bg-neutral-700 flex flex-col items-center fixed rounded-sm w-[88%] sm:w-7/12 sm:max-w-[380px] z-20 right-0 inset-y-0 shadow-button select-none"
+            className="bg-neutral-700 flex flex-col items-center fixed rounded-sm w-full z-20 right-0 inset-y-0 shadow-button select-none"
             initial={{ x: 500 }}
             animate={{ x: - 0 }}
             exit={{ x: 500 }}
@@ -53,32 +53,30 @@ function Header() {
           >
 
             <div className="w-full flex flex-col items-center justify-center">
-              <div className="w-full flex flex-col justify-center relative">
-                <div className="flex w-12 h-14 items-center justify-center absolute -left-9 top-0 bg-neutral-700 rounded-tl-lg rounded-bl-lg ">
-                  <button
-                    className="text-white mr-2"
-                    onClick={toggleMenu}
-                  >
-                    <CaretLeft
-                      size={20}
-                      weight="bold"
-                    />
-                  </button>
-                </div>
+              <div className="w-10/12 flex items-center justify-end mt-6 text-neutral-100 font-exo">
+                <button
+                  className="text-white rounded-md hover:scale-125 transition-all"
+                  onClick={toggleMenu}
+                >
+                  <X
+                    size={24}
+                    weight="bold"
+                  />
+                </button>
               </div>
 
-              <div className="flex flex-col items-center justify-center mt-4 text-neutral-100 font-exo">
-                <h2 className="text-md text-white">
+              <div className="w-10/12 flex items-center 
+              my-11 text-neutral-100 font-exo">
+                <h2 className="text-4xl font-light text-neutral-100">
                   Advanced Search
                 </h2>
               </div>
-
-              <div className="w-full flex items-center justify-center mt-10 mb-4 bg-neutral-700">
+              <div className="w-full flex items-center justify-center mb-2 bg-neutral-700">
                 <div className="w-10/12 flex flex-col justify-center">
-                  <span className="font-light text-2xl font-exo text-neutral-100">
+                  <span className="font-light text-3xl font-exo text-neutral-100">
                     Filter by Type
                   </span>
-                  <span className="font-light text-xs font-exo text-neutral-200 mt-1">
+                  <span className="font-light text-sm font-exo text-neutral-200 mt-1">
                     T = Type
                   </span>
                 </div>
@@ -98,7 +96,7 @@ function Header() {
                         if (filter === "bug") {
                           toggleTag("")
                         } else {
-                        toggleTag("bug")
+                          toggleTag("bug")
                         }
                       }}
                       className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "bug" ? "bg-sky-500" : "bg-neutral-100"}`}
@@ -114,7 +112,16 @@ function Header() {
                     >
                       Dragon
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "dragon") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("dragon")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "dragon" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -126,7 +133,16 @@ function Header() {
                     >
                       Fairy
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "fairy") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("fairy")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "fairy" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -138,7 +154,16 @@ function Header() {
                     >
                       Fire
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "fire") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("fire")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "fire" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -150,7 +175,16 @@ function Header() {
                     >
                       Ghost
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "ghost") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("ghost")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "ghost" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -162,7 +196,16 @@ function Header() {
                     >
                       Ground
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "ground") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("ground")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "ground" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -174,7 +217,16 @@ function Header() {
                     >
                       Normal
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "normal") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("normal")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "normal" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -186,7 +238,16 @@ function Header() {
                     >
                       Psychic
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "psychic") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("psychic")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "psychic" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -198,7 +259,16 @@ function Header() {
                     >
                       Steel
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "steel") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("steel")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "steel" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -212,7 +282,16 @@ function Header() {
                     >
                       Dark
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "dark") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("dark")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "dark" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -224,7 +303,16 @@ function Header() {
                     >
                       Electric
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "electric") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("electric")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "electric" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -236,7 +324,16 @@ function Header() {
                     >
                       Fighting
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "fighting") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("fighting")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "fighting" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -248,7 +345,16 @@ function Header() {
                     >
                       Flying
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "flying") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("flying")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "flying" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -260,7 +366,16 @@ function Header() {
                     >
                       Grass
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "grass") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("grass")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "grass" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -272,7 +387,16 @@ function Header() {
                     >
                       Ice
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "ice") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("ice")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "ice" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -284,7 +408,16 @@ function Header() {
                     >
                       Poison
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "poison") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("poison")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "poison" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -296,7 +429,16 @@ function Header() {
                     >
                       Rock
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "rock") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("rock")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "rock" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -308,7 +450,16 @@ function Header() {
                     >
                       Water
                     </span>
-                    <button className="flex items-center justify-center rounded-full bg-neutral-100 h-6 w-6 text-lg">
+                    <button
+                      onClick={() => {
+                        if (filter === "water") {
+                          toggleTag("")
+                        } else {
+                          toggleTag("water")
+                        }
+                      }}
+                      className={`flex items-center justify-center rounded-full h-6 w-6 text-lg ${filter === "water" ? "bg-sky-500" : "bg-neutral-100"}`}
+                    >
                       <span className="font-bold pt-1 text-neutral-800">
                         T
                       </span>
@@ -320,7 +471,9 @@ function Header() {
               <div className="w-full flex flex-col items-center justify-center mt-8 gap-4">
                 <button
                   className="flex w-10/12 justify-center items-center bg-red-500 hover:bg-red-600 transition-all p-3 rounded-md shadow-button gap-2 font-exo text-neutral-100"
-                  type="submit"
+                  onClick={() => {
+                    toggleMenu()
+                  }}
                 >
                   <GoSearch
                     color="white"
@@ -330,7 +483,9 @@ function Header() {
                 </button>
                 <button
                   className="flex w-10/12 justify-center items-center bg-neutral-500 hover:bg-neutral-600 transition-all p-3 rounded-md shadow-button gap-2 font-exo text-neutral-100"
-                  type="submit"
+                  onClick={() => {
+                    toggleTag("")
+                  }}
                 >
                   Reset
                 </button>
