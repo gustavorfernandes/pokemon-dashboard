@@ -6,7 +6,7 @@ import { GlobalContext } from "../contexts/GlobalContext"
 function Search(props: any) {
   const initialList = props.pokemonsObject
 
-  const { pokemonList, setCurrentPokemonList, setItensPerPage }: any = useContext(GlobalContext)
+  const { pokemonList, setCurrentPokemonList, setItensPerPage, setInitial }: any = useContext(GlobalContext)
   const [search, setSearch] = useState("")
 
   function submitSearch(event: React.FormEvent) {
@@ -25,6 +25,7 @@ function Search(props: any) {
       const currentList = submitSearch(event)
       setCurrentPokemonList(currentList)
       setItensPerPage(12)
+      setInitial(false)
     }}>
       <fieldset>
         <div className="w-full flex items-center justify-center gap-2 mb-4">

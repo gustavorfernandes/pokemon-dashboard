@@ -28,13 +28,13 @@ function toggleType(type: string, index: string) {
 }
 
 function PokemonCard(props: any) {
-  const { currentPokemonList, itensPerPage, setItensPerPage }: any = useContext(GlobalContext)
+  const { currentPokemonList, itensPerPage, setItensPerPage, isInitial }: any = useContext(GlobalContext)
   const pokemons = currentPokemonList
   const [loading, setLoading] = useState(false)
   const [selectList, setSelectList] = useState(options[0])
 
   const [order, setOrder] = useState(1)
-  const [filterOrder, setFilterOrder] = useState("number")
+  const [filterOrder, setFilterOrder] = useState("number")  
 
   function loadMorePokemon() {
     setLoading(true)
@@ -188,7 +188,7 @@ function PokemonCard(props: any) {
         </div>
       }
 
-      {pokemons.length === 0 &&
+      {currentPokemons.length === 0 && !isInitial &&
         <div className="w-full border-2 border-red-500 rounded-md flex flex-col items-center justify-center p-2 select-none font-exo gap-2">
           <span className="text-red-600 text-lg">
             No Pokémon Matched Your Search!
