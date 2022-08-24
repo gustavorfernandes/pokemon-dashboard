@@ -14,6 +14,19 @@ const options = [
   { id: 4, name: 'Z-A', unavailable: false }
 ]
 
+function toggleType(type: string, index: string) {
+  const tagColor = type
+  return (
+    <span
+      id={index}
+      className={`capitalize h-6 w-24 flex items-center justify-center text-center shadow-tag rounded text-sm font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
+      key={index}
+    >
+      {type}
+    </span>
+  )
+}
+
 function PokemonCard(props: any) {
   const { currentPokemonList, itensPerPage, setItensPerPage }: any = useContext(GlobalContext)
   const pokemons = currentPokemonList
@@ -32,7 +45,7 @@ function PokemonCard(props: any) {
   }
 
   let pokemonsReduce = pokemons.reduce((pokemonsReduce: any, currentPokemon: any) => {
-    pokemonsReduce[currentPokemon.entry_number] = { number: currentPokemon.entry_number, name: currentPokemon.pokemon_species.name }
+    pokemonsReduce[currentPokemon.number] = { number: currentPokemon.number, name: currentPokemon.name, types: currentPokemon.types }
     return pokemonsReduce
   }, [])
 
@@ -72,7 +85,7 @@ function PokemonCard(props: any) {
             setSelectList(e)
           }}>
             <div className="relative mt-1 ">
-              <Listbox.Button className="relative  w-full cursor-default rounded-md bg-neutral-800 py-3 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm font-light">
+              <Listbox.Button className="relative w-full cursor-default rounded-md bg-neutral-800 py-3 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm font-light">
                 <span className="block truncate ">{selectList.name}</span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 ">
                   <CaretDown
@@ -117,20 +130,7 @@ function PokemonCard(props: any) {
 
       {currentPokemons.map((pokemon: any) => {
         return (
-          <div className="w-10/12 flex flex-col justify-center gap-2 font-exo select-none mb-4" key={pokemon.number}>
-
-            <div className="w-full flex items-center justify-between">
-              <div className="flex flex-col justify-center leading-7">
-                <span className="self-start text-neutral-500 font-bold">
-                  {pokemon.number < 10 && `nº 00${pokemon.number}`}
-                  {pokemon.number >= 10 && pokemon.number < 100 && `nº 0${pokemon.number}`}
-                  {pokemon.number >= 100 && `nº ${pokemon.number}`}
-                </span>
-                <h2 className="capitalize text-3xl text-neutral-800 font-bold">
-                  {pokemon.name}
-                </h2>
-              </div>
-            </div>
+          <div className="w-10/12 flex flex-col justify-center font-exo select-none mb-4" key={pokemon.number}>
 
             <div className="w-full bg-neutral-100 p-8 rounded-lg flex items-center justify-center mb-2">
               <Link href={`/${pokemon.number}`}>
@@ -143,12 +143,30 @@ function PokemonCard(props: any) {
                 </a>
               </Link>
             </div>
+
+            <div className="w-full flex justify-between mb-4">
+              <div className="flex flex-col leading-7">
+                <span className="self-start text-neutral-500 font-bold">
+                  {pokemon.number < 10 && `nº 00${pokemon.number}`}
+                  {pokemon.number >= 10 && pokemon.number < 100 && `nº 0${pokemon.number}`}
+                  {pokemon.number >= 100 && `nº ${pokemon.number}`}
+                </span>
+                <h2 className="capitalize text-3xl text-neutral-800 font-bold">
+                  {pokemon.name}
+                </h2>
+              </div>
+              <div className="flex flex-col items-center gap-2 mt-1">
+                {pokemon.types.map((item: any) => (
+                  toggleType(item.type.name, item.type.name)
+                ))}
+              </div>
+            </div>
           </div>
         )
       })
       }
 
-      {pokemons.length >= currentPokemons.length && pokemons.length > 0 &&
+      {pokemons.length > currentPokemons.length && pokemons.length > 0 &&
         <div className="w-10/12 flex items-center justify-center my-2 relative">
           <button
             className="w-full bg-sky-600 hover:bg-sky-700 rounded transition-all shadow-button text-white font-exo text-lg h-12"

@@ -42,11 +42,11 @@ function PokemonList(props: any) {
               Search for a Pokémon by name or using its National Pokédex number.
             </h2>
 
-            <Search pokemons={props.pokemons}/>
+            <Search pokemons={props.pokemons} pokemonsObject={props.pokemonsObject} />
           </div>
         </div>
       </div>
-      <PokemonCard pokemons={props.pokemons} />
+      <PokemonCard pokemons={props.pokemons} pokemonsObject={props.pokemonsObject} />
 
       <AnimatePresence>
         {scrollDown &&

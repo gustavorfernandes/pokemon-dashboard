@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 function Search(props: any) {
-  const initialList = props.pokemons
+  const initialList = props.pokemonsObject
 
   const { pokemonList, setCurrentPokemonList, setItensPerPage }: any = useContext(GlobalContext)
   const [search, setSearch] = useState("")
@@ -12,7 +12,7 @@ function Search(props: any) {
   function submitSearch(event: React.FormEvent) {
     event.preventDefault()
     return pokemonList.filter(function (item: any) {      
-      return item.pokemon_species.name.includes(search.toLowerCase()) || item.entry_number.toString().includes(search.toLowerCase())
+      return item.name.includes(search.toLowerCase()) || item.number.toString().includes(search.toLowerCase())
     })    
   }
 

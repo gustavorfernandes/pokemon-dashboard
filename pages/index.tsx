@@ -45,8 +45,7 @@ export async function getStaticProps(context: any) {
 
 const Home: NextPage = ({ pokemons, pokemonsObject }: any) => {
   const { setPokemonList }: any = useContext(GlobalContext)
-  setPokemonList(pokemons)
-  console.log(pokemonsObject)
+  setPokemonList(pokemonsObject)
 
   return (
     <>
@@ -57,7 +56,7 @@ const Home: NextPage = ({ pokemons, pokemonsObject }: any) => {
 
       <Header />
 
-      <PokemonList pokemons={pokemons} />
+      <PokemonList pokemons={pokemons} pokemonsObject={pokemonsObject} />
 
       <Footer />
     </>
