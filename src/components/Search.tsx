@@ -11,7 +11,9 @@ function Search(props: any) {
 
   function submitSearch(event: React.FormEvent) {
     event.preventDefault()
-    return pokemonList.filter((item: any) => item.pokemon_species.name.includes(search.toLowerCase()))
+    return pokemonList.filter(function (item: any) {      
+      return item.pokemon_species.name.includes(search.toLowerCase()) || item.entry_number.toString().includes(search.toLowerCase())
+    })    
   }
 
   useEffect(() => {
