@@ -16,7 +16,7 @@ function Search(props: any) {
     })    
   }
 
-  function clearField(event: React.FormEvent) {
+  function clearField() {
     setSearch("")
   }
 
