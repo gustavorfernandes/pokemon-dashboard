@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import { GoSearch } from "@react-icons/all-files/go/GoSearch"
 import { AnimatePresence, motion } from "framer-motion"
-import { CaretLeft, X, FunnelSimple } from "phosphor-react"
-import { useState } from "react"
+import { X, FunnelSimple } from "phosphor-react"
+import { useState, useContext } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
 
 function Header() {
+  const { setInitial, setItensPerPage, pokemonList, setCurrentPokemonList }: any = useContext(GlobalContext)
   const [isOpen, setOpen] = useState(false)
   const [filter, setFilter] = useState("")
 
@@ -15,6 +17,20 @@ function Header() {
   function toggleTag(type: string) {
     const filterType = type
     setFilter(filterType)
+  }
+
+  function searchByType(type: string) {
+    if (!type) {
+      return pokemonList
+    } else {
+      return pokemonList.filter(function (item: any) {
+        if (item.types[1]) {
+          return item.types[0].type.name === type || item.types[1].type.name === type
+        } else {
+          return item.types[0].type.name === type
+        }
+      })
+    }
   }
 
   return (
@@ -56,7 +72,15 @@ function Header() {
               <div className="w-10/12 flex items-center justify-end mt-6 text-neutral-100 font-exo">
                 <button
                   className="text-white rounded-md hover:scale-125 transition-all"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu()
+                    if (!filter) {
+                      const currentList = searchByType(filter)
+                      setCurrentPokemonList(currentList)
+                      setItensPerPage(12)
+                      setInitial(false)
+                    }
+                  }}
                 >
                   <X
                     size={24}
@@ -473,6 +497,10 @@ function Header() {
                   className="flex w-10/12 justify-center items-center bg-red-500 hover:bg-red-600 transition-all p-3 rounded-md shadow-button gap-2 font-exo text-neutral-100"
                   onClick={() => {
                     toggleMenu()
+                    const currentList = searchByType(filter)
+                    setCurrentPokemonList(currentList)
+                    setItensPerPage(12)
+                    setInitial(false)
                   }}
                 >
                   <GoSearch

@@ -52,18 +52,20 @@ function PokemonList(props: any) {
         {scrollDown &&
           <motion.div
             className="fixed flex items-center justify-center w-16 h-16 bg-neutral-500 bottom-0 right-0 rounded-tl-md opacity-70 z-10 text-white shadow-button"
-            initial={{  y: 150 }}
+            initial={{ y: 150 }}
             animate={{ y: 0 }}
             exit={{ y: 150 }}
             transition={{ duration: 0.3 }}
           >
-              <button className="">
-                <CaretUp
-                  size={48}
-                  weight="bold"
-                  onClick={handleScrollTop}
-                />
-              </button>
+            <button
+              className="w-full h-full flex items-center justify-center select-none"
+              onClick={handleScrollTop}
+            >
+              <CaretUp
+                size={48}
+                weight="bold"
+              />
+            </button>
           </motion.div>
         }
       </AnimatePresence>
