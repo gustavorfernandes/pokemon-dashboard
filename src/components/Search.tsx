@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { GoSearch } from "@react-icons/all-files/go/GoSearch"
-import { useState, useContext, useEffect } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 function Search(props: any) {
@@ -16,6 +16,10 @@ function Search(props: any) {
     })    
   }
 
+  function clearField(event: React.FormEvent) {
+    setSearch("")
+  }
+
   useEffect(() => {
     setCurrentPokemonList(initialList)
   }, [])
@@ -26,6 +30,7 @@ function Search(props: any) {
       setCurrentPokemonList(currentList)
       setItensPerPage(12)
       setInitial(false)
+      clearField()
     }}>
       <fieldset>
         <div className="w-full flex items-center justify-center gap-2 mb-4">
