@@ -34,11 +34,11 @@ function PokemonList(props: any) {
       <div className="w-10/12 flex flex-col items-center justify-center mt-4">
         <div className="w-screen bg-neutral-800 py-4 mb-8 flex flex-col items-center justify-center gap-4">
           <div className="w-10/12 flex flex-col justify-center">
-            <h1 className="w-9/12 font-exo font-light text-3xl text-neutral-100 mb-2">
+            <h1 className="w-9/12 font-exo font-light text-3xl md:text-4xl text-neutral-100 mb-2">
               Pokédex
             </h1>
 
-            <h2 className="w-10/12 text-base text-neutral-200 my-4 font-roboto font-light">
+            <h2 className="w-10/12 md:w-5/12 text-base md:text-lg text-neutral-200 my-4 font-roboto font-light">
               Search for a Pokémon by name or using its National Pokédex number.
             </h2>
 

@@ -145,14 +145,12 @@ function PokemonAbout(props: any) {
         </div>
       </div>
 
-      <div className="w-10/12 flex items-center justify-center mt-4">
-        <button className="w-full bg-green-600 hover:bg-green-700 py-2 rounded transition-all shadow-button text-white font-exo text-lg">
-          <Link href={"/"}>
-            <a>
-              Explore more Pokémon
-            </a>
-          </Link>
-        </button>
+      <div className="w-10/12 sm:max-w-sm flex items-center justify-center mt-4">
+        <Link href={"/"}>
+          <a className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 py-2 rounded transition-all shadow-button text-white font-exo text-lg">
+            Explore more Pokémon
+          </a>
+        </Link>
       </div>
     </div >
   )

@@ -38,7 +38,7 @@ function Header() {
       <div className="w-screen flex flex-col items-center justify-center pt-4">
         <div className="w-10/12 flex items-center justify-between">
           <img
-            className="w-20 justify-self-center"
+            className="w-20 md:w-24 justify-self-center"
             src="/images/pokemon-logo.png"
             alt="Pokémon Logo"
           />
@@ -48,7 +48,7 @@ function Header() {
             onClick={toggleMenu}
           >
             <FunnelSimple
-              className="bg-neutral-200 rounded-md shadow-button hover:scale-105 transition-all p-[10px] w-11 h-11"
+              className="bg-neutral-200 rounded-md shadow-button hover:scale-105 transition-all p-[10px] w-11 md:w-14 h-11 md:h-14 md:p-4"
               size={30}
               weight="bold"
             />
@@ -62,10 +62,10 @@ function Header() {
 
           <motion.div
             className="bg-neutral-700 flex flex-col items-center fixed rounded-sm w-full z-20 right-0 inset-y-0 shadow-button select-none"
-            initial={{ x: 500 }}
+            initial={{ x: 1100 }}
             animate={{ x: - 0 }}
-            exit={{ x: 500 }}
-            transition={{ duration: 0.35 }}
+            exit={{ x: 1100 }}
+            transition={{ duration: 0.5 }}
           >
 
             <div className="w-full flex flex-col items-center justify-center">
@@ -100,7 +100,7 @@ function Header() {
                   <span className="font-light text-3xl font-exo text-neutral-100">
                     Filter by Type
                   </span>
-                  <span className="font-light text-sm font-exo text-neutral-200 mt-1">
+                  <span className="font-light text-sm md:text-lg  font-exo text-neutral-200 mt-1">
                     T = Type
                   </span>
                 </div>
@@ -111,7 +111,7 @@ function Header() {
                 <div className="w-6/12 flex flex-col justify-center items-center gap-2">
                   <div className="flex items-center w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-bug flex items-center justify-center text-white"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-bug flex items-center justify-center text-white"
                     >
                       Bug
                     </span>
@@ -132,7 +132,7 @@ function Header() {
                   </div>
                   <div className="flex items-center w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-dragon flex items-center justify-center text-white"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-dragon flex items-center justify-center text-white"
                     >
                       Dragon
                     </span>
@@ -153,7 +153,7 @@ function Header() {
                   </div>
                   <div className="flex items-center w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-fairy flex items-center justify-center"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-fairy flex items-center justify-center"
                     >
                       Fairy
                     </span>
@@ -174,7 +174,7 @@ function Header() {
                   </div>
                   <div className="flex items-center w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-fire flex items-center justify-center text-white"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-fire flex items-center justify-center text-white"
                     >
                       Fire
                     </span>
@@ -195,7 +195,7 @@ function Header() {
                   </div>
                   <div className="flex items-center w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-ghost flex items-center justify-center text-white"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-ghost flex items-center justify-center text-white"
                     >
                       Ghost
                     </span>
@@ -216,7 +216,7 @@ function Header() {
                   </div>
                   <div className="flex items-center w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-ground flex items-center justify-center"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-ground flex items-center justify-center"
                     >
                       Ground
                     </span>
@@ -237,7 +237,7 @@ function Header() {
                   </div>
                   <div className="flex items-center w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-normal flex items-center justify-center"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-normal flex items-center justify-center"
                     >
                       Normal
                     </span>
@@ -258,7 +258,7 @@ function Header() {
                   </div>
                   <div className="flex items-center w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-psychic flex items-center justify-center text-white"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-psychic flex items-center justify-center text-white"
                     >
                       Psychic
                     </span>
@@ -279,7 +279,7 @@ function Header() {
                   </div>
                   <div className="flex items-center w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-steel flex items-center justify-center"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-steel flex items-center justify-center"
                     >
                       Steel
                     </span>
@@ -300,9 +300,9 @@ function Header() {
                   </div>
                 </div>
                 <div className="w-6/12 flex flex-col justify-center items-center gap-2">
-                  <div className="flex items-center justify-end w-full gap-2">
+                  <div className="flex items-center justify-end sm:justify-start w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-dark flex items-center justify-center text-white"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-dark flex items-center justify-center text-white"
                     >
                       Dark
                     </span>
@@ -321,9 +321,9 @@ function Header() {
                       </span>
                     </button>
                   </div>
-                  <div className="flex items-center justify-end w-full gap-2">
+                  <div className="flex items-center justify-end sm:justify-start w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-electric flex items-center justify-center"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-electric flex items-center justify-center"
                     >
                       Electric
                     </span>
@@ -342,9 +342,9 @@ function Header() {
                       </span>
                     </button>
                   </div>
-                  <div className="flex items-center justify-end w-full gap-2">
+                  <div className="flex items-center justify-end sm:justify-start w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-fighting flex items-center justify-center text-white"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-fighting flex items-center justify-center text-white"
                     >
                       Fighting
                     </span>
@@ -363,9 +363,9 @@ function Header() {
                       </span>
                     </button>
                   </div>
-                  <div className="flex items-center justify-end w-full gap-2">
+                  <div className="flex items-center justify-end sm:justify-start w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-flying flex items-center justify-center"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-flying flex items-center justify-center"
                     >
                       Flying
                     </span>
@@ -384,9 +384,9 @@ function Header() {
                       </span>
                     </button>
                   </div>
-                  <div className="flex items-center justify-end w-full gap-2">
+                  <div className="flex items-center justify-end sm:justify-start w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-grass flex items-center justify-center"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-grass flex items-center justify-center"
                     >
                       Grass
                     </span>
@@ -405,9 +405,9 @@ function Header() {
                       </span>
                     </button>
                   </div>
-                  <div className="flex items-center justify-end w-full gap-2">
+                  <div className="flex items-center justify-end sm:justify-start w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-ice flex items-center justify-center"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-ice flex items-center justify-center"
                     >
                       Ice
                     </span>
@@ -426,9 +426,9 @@ function Header() {
                       </span>
                     </button>
                   </div>
-                  <div className="flex items-center justify-end w-full gap-2">
+                  <div className="flex items-center justify-end sm:justify-start w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-poison flex items-center justify-center text-white"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-poison flex items-center justify-center text-white"
                     >
                       Poison
                     </span>
@@ -447,9 +447,9 @@ function Header() {
                       </span>
                     </button>
                   </div>
-                  <div className="flex items-center justify-end w-full gap-2">
+                  <div className="flex items-center justify-end sm:justify-start w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-rock flex items-center justify-center text-white"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-rock flex items-center justify-center text-white"
                     >
                       Rock
                     </span>
@@ -468,9 +468,9 @@ function Header() {
                       </span>
                     </button>
                   </div>
-                  <div className="flex items-center justify-end w-full gap-2">
+                  <div className="flex items-center justify-end sm:justify-start w-full gap-2">
                     <span
-                      className="capitalize w-20 h-8 text-center shadow-tag rounded-md text-sm font-exo bg-water flex items-center justify-center text-white"
+                      className="capitalize w-20 md:w-28 h-8 md:h-9 text-center shadow-tag rounded-md text-sm md:text-lg font-exo bg-water flex items-center justify-center text-white"
                     >
                       Water
                     </span>
@@ -494,7 +494,7 @@ function Header() {
 
               <div className="w-full flex flex-col items-center justify-center mt-8 gap-4">
                 <button
-                  className="flex w-10/12 justify-center items-center bg-red-500 hover:bg-red-600 transition-all p-3 rounded-md shadow-button gap-2 font-exo text-neutral-100"
+                  className="flex w-10/12 justify-center items-center bg-red-500 hover:bg-red-600 transition-all p-3 rounded-md shadow-button gap-2 font-exo md:text-lg text-neutral-100"
                   onClick={() => {
                     toggleMenu()
                     const currentList = searchByType(filter)
@@ -510,7 +510,7 @@ function Header() {
                   Search
                 </button>
                 <button
-                  className="flex w-10/12 justify-center items-center bg-neutral-500 hover:bg-neutral-600 transition-all p-3 rounded-md shadow-button gap-2 font-exo text-neutral-100"
+                  className="flex w-10/12 justify-center items-center bg-neutral-500 hover:bg-neutral-600 transition-all p-3 rounded-md shadow-button gap-2 font-exo md:text-lg text-neutral-100"
                   onClick={() => {
                     toggleTag("")
                   }}

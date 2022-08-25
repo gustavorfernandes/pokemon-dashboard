@@ -33,9 +33,9 @@ function Search(props: any) {
       clearField()
     }}>
       <fieldset>
-        <div className="w-full flex items-center justify-center gap-2 mb-4">
+        <div className="w-full flex items-center justify-start gap-2 mb-4">
           <input
-            className="w-10/12 h-11 border-2 font-roboto font-light border-neutral-600 bg-white rounded-md pl-4 focus:border-yellow-500 focus:outline-0"
+            className="w-10/12 md:max-w-xs h-11 md:h-14 md:text-lg border-2 font-roboto font-light border-neutral-600 bg-white rounded-md pl-4 focus:border-yellow-500 focus:outline-0"
             value={search}
             name="search"
             type="text"
@@ -47,7 +47,7 @@ function Search(props: any) {
           />
 
           <button
-            className="flex justify-center items-center bg-red-500 hover:bg-red-600 transition-all p-3 rounded-md shadow-button"
+            className="flex justify-center items-center bg-red-500 hover:bg-red-600 transition-all p-3 md:p-0 md:w-14 md:h-14 rounded-md shadow-button"
             type="submit"
           >
             <GoSearch
