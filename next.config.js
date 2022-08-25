@@ -4,14 +4,4 @@ const nextConfig = {
   swcMinify: true,
 }
 
-module.exports = {
-  async redirects() {
-    return [
-      {
-        source: '/200',
-        destination: '/',
-        permanent: true,
-      },
-    ]
-  },
-}
+module.exports = nextConfig
