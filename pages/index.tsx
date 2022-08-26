@@ -6,6 +6,7 @@ import PokemonList from "../src/patterns/PokemonList"
 import axios from "axios"
 import { useContext } from "react"
 import { GlobalContext } from "../src/contexts/GlobalContext"
+import Dashboard from "../src/screens/Dashboard"
 
 export async function getStaticProps(context: any) {
 
@@ -54,11 +55,7 @@ const Home: NextPage = ({ pokemons, pokemonsObject }: any) => {
         <meta name="description" content="Pokédex Dashboard Web Application" />
       </Head>
 
-      <Header />
-
-      <PokemonList pokemons={pokemons} pokemonsObject={pokemonsObject} />
-
-      <Footer />
+      <Dashboard pokemons={pokemons} pokemonsObject={pokemonsObject} />
     </>
   )
 }

@@ -1,18 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
+import { Listbox } from "@headlessui/react"
 import { GoSearch } from "@react-icons/all-files/go/GoSearch"
 import { AnimatePresence, motion } from "framer-motion"
-import { X, FunnelSimple } from "phosphor-react"
+import { X, FunnelSimple, List, CaretDown, Check } from "phosphor-react"
 import { useState, useContext } from "react"
+import Search from "../components/Search"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 function Header() {
-  const { setInitial, setItensPerPage, pokemonList, setCurrentPokemonList }: any = useContext(GlobalContext)
+  const { setInitial, setItensPerPage, pokemonList, setCurrentPokemonList, selectList, setSelectList, options, order, setOrder, filterOrder, setFilterOrder }: any = useContext(GlobalContext)
   const [isOpen, setOpen] = useState(false)
   const [filter, setFilter] = useState("")
-
+  
   function toggleMenu() {
     setOpen(!isOpen)
-  }
+  }  
 
   function toggleTag(type: string) {
     const filterType = type
@@ -35,7 +37,7 @@ function Header() {
 
   return (
     <>
-      <div className="w-screen flex flex-col items-center justify-center pt-4">
+      <div className="w-screen flex flex-col items-center justify-center pt-4 lg:h-16 lg:hidden">
         <div className="w-10/12 flex items-center justify-between">
           <img
             className="w-20 md:w-24 justify-self-center"
@@ -56,18 +58,94 @@ function Header() {
         </div>
       </div>
 
+      <div className="hidden lg:flex w-full lg:bg-white items-center justify-center h-[4.75rem] mb-8 lg:mb-0 z-30 shadow-container">
+        <div className="w-11/12 flex items-center justify-between">
+          <div className="flex items-center justify-center">
+            
+            <div className="flex items-center justify-center">
+              <Search />
+            </div>
+          </div>
+          <div className="w-full flex items-center justify-end gap-4 pr-8">
+            <span className="text-neutral-500 font-exo font-bold text-sm">
+              Sort by
+            </span>
+            <div className="w-full max-w-[15rem] text-white font-exo z-20">
+              <Listbox value={selectList} onChange={(e) => {
+                if (e.id === 1) {
+                  setOrder(1)
+                  setFilterOrder("number")
+                  setItensPerPage(12)
+                } else if (e.id === 2) {
+                  setOrder(-1)
+                  setFilterOrder("number")
+                  setItensPerPage(12)
+                } else if (e.id === 3) {
+                  setOrder(1)
+                  setFilterOrder("name")
+                  setItensPerPage(12)
+                } else if (e.id === 4) {
+                  setOrder(-1)
+                  setFilterOrder("name")
+                  setItensPerPage(12)
+                }
+                setSelectList(e)
+              }}>
+                <div className="relative">
+                  <Listbox.Button className="relative w-full h-10 cursor-default rounded-md bg-neutral-800 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 font-light text-sm">
+                    <span className="block truncate ">{selectList.name}</span>
+                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 ">
+                      <CaretDown
+                        className="h-5 w-5 text-white"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </Listbox.Button>
+
+                  <Listbox.Options className="absolute max-h-60 w-full overflow-auto rounded-bl-md rounded-br-md bg-neutral-700 -mt-[2px] font-light shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+                    {options.map((item: any, index: any) => (
+                      <Listbox.Option
+                        key={index}
+                        className={({ active }) =>
+                          `relative cursor-default font-light select-none py-2 pl-10 pr-4 ${active ? 'bg-neutral-800' : 'text-white'
+                          }`
+                        }
+                        value={item}
+                      >
+                        {({ selected }) => (
+                          <>
+                            <span
+                              className={`block truncate ${selected ? 'font-light' : 'font-light'
+                                }`}
+                            >
+                              {item.name}
+                            </span>
+                            {selected ? (
+                              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white">
+                                <Check className="h-5 w-5" aria-hidden="true" />
+                              </span>
+                            ) : null}
+                          </>
+                        )}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </div>
+              </Listbox>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <AnimatePresence>
         {isOpen &&
-
-
           <motion.div
-            className="bg-neutral-700 flex flex-col items-center fixed rounded-sm w-full z-20 right-0 inset-y-0 shadow-button select-none"
+            className="bg-neutral-700 flex flex-col items-center fixed rounded-sm w-full md:w-6/12 right-0 inset-y-0 shadow-button select-none z-30"
             initial={{ x: 1100 }}
             animate={{ x: - 0 }}
             exit={{ x: 1100 }}
             transition={{ duration: 0.5 }}
           >
-
             <div className="w-full flex flex-col items-center justify-center">
               <div className="w-10/12 flex items-center justify-end mt-6 text-neutral-100 font-exo">
                 <button
