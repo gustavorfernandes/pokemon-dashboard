@@ -16,12 +16,13 @@ export const ContextProvider = ({ children }: any) => {
   const [ currentPokemonList, setCurrentPokemonList ] = useState([])
   const [itensPerPage, setItensPerPage] = useState(12)
   const [isInitial, setInitial] = useState(true)
-  const [selectList, setSelectList] = useState(options[0])
+  const [selectList, setSelectList] = useState(options[0])  
+  const [filter, setFilter] = useState("")
   const [order, setOrder] = useState(1)
   const [filterOrder, setFilterOrder] = useState("number")
     
   return (
-    <GlobalContext.Provider value={{ sideBar, setSideBar, pokemonList, setPokemonList, currentPokemonList, setCurrentPokemonList, itensPerPage, setItensPerPage, isInitial, setInitial, selectList, setSelectList, options, order, setOrder, filterOrder, setFilterOrder }}>
+    <GlobalContext.Provider value={{ sideBar, setSideBar, pokemonList, setPokemonList, currentPokemonList, setCurrentPokemonList, itensPerPage, setItensPerPage, isInitial, setInitial, selectList, setSelectList, options, filter, setFilter, order, setOrder, filterOrder, setFilterOrder }}>
       {children}
     </GlobalContext.Provider>
   )

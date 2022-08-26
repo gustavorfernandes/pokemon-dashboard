@@ -117,7 +117,7 @@ function PokemonCard(props: any) {
         </div>
       </div>
 
-      <div className="w-10/12 lg:w-full flex flex-col sm:flex-row sm:flex-wrap items-center justify-center sm:justify-start sm:gap-4 lg:gap-10 lg:max-h-[calc(100vh-200px)] lg:overflow-y-scroll lg:mb-0 lg:px-4 lg:pl-12">
+      <div className="w-10/12 lg:w-full flex flex-col sm:flex-row sm:flex-wrap items-center justify-center sm:justify-start sm:gap-4 lg:gap-10 lg:max-h-[calc(100vh-200px)] lg:overflow-y-scroll scrollbar lg:mb-0 lg:px-4 lg:pl-12">
         {currentPokemons.map((pokemon: any) => {
           return (
             <div className="w-full sm:w-[48%] md:w-[31.5%] lg:w-[20%] xl:w-[13%] flex flex-col justify-center font-exo select-none mb-4" key={pokemon.number}>

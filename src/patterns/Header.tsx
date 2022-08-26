@@ -8,9 +8,8 @@ import Search from "../components/Search"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 function Header() {
-  const { setInitial, setItensPerPage, pokemonList, setCurrentPokemonList, selectList, setSelectList, options, order, setOrder, filterOrder, setFilterOrder }: any = useContext(GlobalContext)
+  const { setInitial, setItensPerPage, pokemonList, setCurrentPokemonList, selectList, setSelectList, options, order, setOrder, filter, setFilter, filterOrder, setFilterOrder }: any = useContext(GlobalContext)
   const [isOpen, setOpen] = useState(false)
-  const [filter, setFilter] = useState("")
   
   function toggleMenu() {
     setOpen(!isOpen)
@@ -58,7 +57,7 @@ function Header() {
         </div>
       </div>
 
-      <div className="hidden lg:flex w-full lg:bg-white items-center justify-center h-[4.75rem] mb-8 lg:mb-0 z-30 shadow-container">
+      <div className="hidden lg:flex w-full lg:bg-white items-center justify-center h-[4.75rem] mb-8 lg:mb-0 z-30 shadow-container select-none">
         <div className="w-11/12 flex items-center justify-between">
           <div className="flex items-center justify-center">
             
@@ -74,20 +73,16 @@ function Header() {
               <Listbox value={selectList} onChange={(e) => {
                 if (e.id === 1) {
                   setOrder(1)
-                  setFilterOrder("number")
-                  setItensPerPage(12)
+                  setFilterOrder("number")                  
                 } else if (e.id === 2) {
                   setOrder(-1)
-                  setFilterOrder("number")
-                  setItensPerPage(12)
+                  setFilterOrder("number")                  
                 } else if (e.id === 3) {
                   setOrder(1)
-                  setFilterOrder("name")
-                  setItensPerPage(12)
+                  setFilterOrder("name")                  
                 } else if (e.id === 4) {
                   setOrder(-1)
-                  setFilterOrder("name")
-                  setItensPerPage(12)
+                  setFilterOrder("name")                  
                 }
                 setSelectList(e)
               }}>
