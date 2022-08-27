@@ -25,7 +25,7 @@ export function Sidebar() {
     <div className="hidden lg:flex flex-col items-center w-3/12 xl:w-[320px] h-screen bg-neutral-800 z-30 select-none">
       <div>
         <img
-          className="w-28 xl:w-36 mt-4 mb-8"
+          className="w-28 xl:w-36 mt-4 mb-10"
           src="/images/pokemon-logo.png"
           alt="Pokeball"
         />
