@@ -6,18 +6,14 @@ import { GlobalContext } from "../contexts/GlobalContext"
 function Search(props: any) {
   const initialList = props.pokemonsObject
 
-  const { pokemonList, setCurrentPokemonList, setItensPerPage, setInitial }: any = useContext(GlobalContext)
+  const { listByType, currentPokemonList, setCurrentPokemonList, setItensPerPage, setInitial }: any = useContext(GlobalContext)
   const [search, setSearch] = useState("")
 
   function submitSearch(event: React.FormEvent) {
     event.preventDefault()
-    return pokemonList.filter(function (item: any) {      
+    return listByType.filter(function (item: any) {
       return item.name.includes(search.toLowerCase()) || item.number.toString().includes(search.toLowerCase())
-    })    
-  }
-
-  function clearField() {
-    setSearch("")
+    })
   }
 
   useEffect(() => {
@@ -30,7 +26,6 @@ function Search(props: any) {
       setCurrentPokemonList(currentList)
       setItensPerPage(12)
       setInitial(false)
-      clearField()
     }}>
       <fieldset>
         <div className="w-full flex items-center justify-start gap-2 lg:gap-0 mb-4 lg:mb-0">

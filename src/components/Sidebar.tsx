@@ -4,7 +4,7 @@ import { useContext, useState } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 export function Sidebar() {
-  const { pokemonList, setCurrentPokemonList, setInitial }: any = useContext(GlobalContext)
+  const { pokemonList, setListByType, setCurrentPokemonList, setInitial }: any = useContext(GlobalContext)
   const [isActive, setIsActive] = useState("")
 
   function searchByType(type: string) {
@@ -30,7 +30,7 @@ export function Sidebar() {
           alt="Pokeball"
         />
       </div>
-      <div className="w-full flex flex-col gap-4 pl-8 h-[70vh] overflow-y-scroll scrollbar-thin mb-8">
+      <div className="w-full flex flex-col gap-4 pl-8 h-[75vh] overflow-y-scroll scrollbar-thin mb-8">
         <h2 className="text-xs text-neutral-500 font-exo uppercase">
           Advanced Search
         </h2>
@@ -46,6 +46,7 @@ export function Sidebar() {
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
               onClick={() => {
                 const currentList = searchByType("")
+                setListByType(currentList)
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
@@ -63,6 +64,7 @@ export function Sidebar() {
                 setIsActive("bug")
               }
               const currentList = searchByType("bug")
+              setListByType(currentList)
               setCurrentPokemonList(currentList)
               setInitial(false)
             }}
@@ -70,57 +72,519 @@ export function Sidebar() {
             Bug
           </button>
         </div>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Dragon
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Fairy
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Fire
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Ghost
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Ground
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Normal
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Psychic
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Steel
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Dark
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Electric
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Fighting
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Flying
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Grass
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Ice
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Poison
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Rock
-        </button>
-        <button className="text-neutral-500 font-exo self-start pl-10 hover:text-neutral-200 transition-all text-sm">
-          Water
-        </button>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "electric" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "electric" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "electric") {
+                setIsActive("electric")
+              }
+              const currentList = searchByType("electric")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Electric
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "dragon" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "dragon" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "dragon") {
+                setIsActive("dragon")
+              }
+              const currentList = searchByType("dragon")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Dragon
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "fairy" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "fairy" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "fairy") {
+                setIsActive("fairy")
+              }
+              const currentList = searchByType("fairy")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Fairy
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "fighting" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "fighting" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "fighting") {
+                setIsActive("fighting")
+              }
+              const currentList = searchByType("fighting")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Fighting
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "fire" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "fire" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "fire") {
+                setIsActive("fire")
+              }
+              const currentList = searchByType("fire")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Fire
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "flying" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "flying" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "flying") {
+                setIsActive("flying")
+              }
+              const currentList = searchByType("flying")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Flying
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "ghost" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "ghost" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "ghost") {
+                setIsActive("ghost")
+              }
+              const currentList = searchByType("ghost")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Ghost
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "grass" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "grass" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "grass") {
+                setIsActive("grass")
+              }
+              const currentList = searchByType("grass")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Grass
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "ground" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "ground" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "ground") {
+                setIsActive("ground")
+              }
+              const currentList = searchByType("ground")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Ground
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "ice" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "ice" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "ice") {
+                setIsActive("ice")
+              }
+              const currentList = searchByType("ice")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Ice
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "normal" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "normal" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "normal") {
+                setIsActive("normal")
+              }
+              const currentList = searchByType("normal")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Normal
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "poison" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "poison" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "poison") {
+                setIsActive("poison")
+              }
+              const currentList = searchByType("poison")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Poison
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "psychic" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "psychic" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "psychic") {
+                setIsActive("psychic")
+              }
+              const currentList = searchByType("psychic")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Psychic
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "rock" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "rock" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "rock") {
+                setIsActive("rock")
+              }
+              const currentList = searchByType("rock")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Rock
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "steel" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "steel" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "steel") {
+                setIsActive("steel")
+              }
+              const currentList = searchByType("steel")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Steel
+          </button>
+        </div>
+        <div className="flex items-center gap-3 relative">
+          {isActive === "water" &&
+            <button
+              className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              onClick={() => {
+                const currentList = searchByType("")
+                setListByType(currentList)
+                setCurrentPokemonList(currentList)
+                setInitial(false)
+                setIsActive("")
+              }}
+            >
+              <X
+                size={12}
+              />
+            </button>
+          }
+          <button
+            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "water" ? "text-neutral-200" : "text-neutral-500"}`}
+            onClick={() => {
+              if (isActive != "water") {
+                setIsActive("water")
+              }
+              const currentList = searchByType("water")
+              setListByType(currentList)
+              setCurrentPokemonList(currentList)
+              setInitial(false)
+            }}
+          >
+            Water
+          </button>
+        </div>
       </div>
     </div>
   )
