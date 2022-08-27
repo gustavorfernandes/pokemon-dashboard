@@ -1,9 +1,9 @@
 import Sidebar from "../components/Sidebar"
 import Footer from "../patterns/Footer"
 import Header from "../patterns/Header"
-import PokemonList from "../patterns/PokemonList"
+import PokemonAbout from "../patterns/PokemonAbout"
 
-export function Dashboard(props: any) {
+export function DashboardScreen(props: any) {
 
   return (
     <>
@@ -11,7 +11,7 @@ export function Dashboard(props: any) {
         <Sidebar />
         <div className="flex w-full flex-col items-center">
           <Header />
-          <PokemonList pokemons={props.pokemons} pokemonsObject={props.pokemonsObject} />
+          <PokemonAbout pokemon={props.pokemon} description={props.description} strength={props.strength} weakness={props.weakness} />
         </div>
       </div>
       <Footer />
@@ -19,4 +19,4 @@ export function Dashboard(props: any) {
   )
 }
 
-export default Dashboard
+export default DashboardScreen

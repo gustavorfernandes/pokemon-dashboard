@@ -1,13 +1,19 @@
-import Footer from "../src/patterns/Footer"
-import PokemonAbout from "../src/patterns/PokemonAbout"
 import axios from "axios"
+import Head from "next/head"
+import PokemonScreen from "../src/screens/PokemonScreen"
 
 const Pokemon = ({ pokemon, description, strength, weakness }: any) => {
+  let pokemonName = pokemon.name
+  pokemonName = pokemonName[0].toUpperCase() + pokemonName.slice(1)
+
   return (
     <>
-      <PokemonAbout pokemon={pokemon} description={description} strength={strength} weakness={weakness} />
+      <Head>
+        <title>{`${pokemonName} | Pokédex`}</title>
+        <meta name="description" content="Pokémon About Page" />
+      </Head>
 
-      <Footer />
+      <PokemonScreen pokemon={pokemon} description={description} strength={strength} weakness={weakness} />
     </>
   )
 }

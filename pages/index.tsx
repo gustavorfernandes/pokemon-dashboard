@@ -6,7 +6,7 @@ import PokemonList from "../src/patterns/PokemonList"
 import axios from "axios"
 import { useContext } from "react"
 import { GlobalContext } from "../src/contexts/GlobalContext"
-import Dashboard from "../src/screens/Dashboard"
+import Dashboard from "../src/screens/DashboardScreen"
 
 export async function getStaticProps(context: any) {
 

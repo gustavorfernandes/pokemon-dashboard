@@ -29,7 +29,7 @@ function PokemonAbout(props: any) {
     return (
       <span
         id={index}
-        className={`capitalize py-1 px-3 w-[31.5%] text-center shadow-tag rounded-md text-sm md:text-base font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
+        className={`capitalize py-1 px-3 w-[31.5%] lg:w-20 text-center shadow-tag rounded-md text-sm md:text-base lg:text-sm font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
         key={index}
       >
         {type}
@@ -51,7 +51,7 @@ function PokemonAbout(props: any) {
       return (
         <span
           id={index}
-          className={`capitalize py-1 px-3 w-[31.5%] text-center shadow-tag rounded-md text-sm md:text-base font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
+          className={`capitalize py-1 px-3 w-[31.5%] lg:w-20 text-center shadow-tag rounded-md text-sm md:text-base lg:text-sm font-exo ${tagColor === "normal" && "bg-normal"} ${tagColor === "fighting" && "bg-fighting text-white"} ${tagColor === "flying" && "bg-flying"} ${tagColor === "poison" && "bg-poison text-white"} ${tagColor === "ground" && "bg-ground"} ${tagColor === "rock" && "bg-rock text-white"} ${tagColor === "bug" && "bg-bug text-white"} ${tagColor === "ghost" && "bg-ghost text-white"} ${tagColor === "steel" && "bg-steel"} ${tagColor === "fire" && "bg-fire text-white"} ${tagColor === "water" && "bg-water text-white"} ${tagColor === "grass" && "bg-grass"} ${tagColor === "electric" && "bg-electric"} ${tagColor === "psychic" && "bg-psychic text-white"} ${tagColor === "ice" && "bg-ice"} ${tagColor === "dragon" && "bg-dragon text-white"} ${tagColor === "dark" && "bg-dark text-white"} ${tagColor === "fairy" && "bg-fairy"}`}
           key={index}
         >
           {type}
@@ -61,9 +61,9 @@ function PokemonAbout(props: any) {
   }
 
   return (
-    <div className="w-screen flex flex-col items-center justify-center">
-      <div className="bg-neutral-800 h-full w-screen flex items-center justify-center">
-        <div className="w-10/12 flex items-center justify-between py-6">
+    <div className="w-screen lg:w-full flex flex-col items-center justify-center lg:h-[calc(100vh-200px)]">
+      <div className="bg-neutral-800 lg:bg-neutral-100 h-full lg:h-8 w-screen lg:w-full flex items-center justify-center">
+        <div className="w-10/12 sm:w-9/12 md:w-8/12 lg:w-11/12 flex items-center justify-between py-6 lg:mt-8">
           <div className="w-6/12 flex items-center">
             {pokemon.id >= 2 &&
               <div className="bg-neutral-200 sm:p-1 rounded-lg shadow-button hover:scale-105 transition-all">
@@ -79,7 +79,7 @@ function PokemonAbout(props: any) {
           </div>
           <div className="w-6/12 flex items-center justify-end">
             {pokemon.id <= 150 &&
-              <div className="bg-neutral-200 sm:p-1 rounded-lg shadow-button hover:scale-105 transition-all">
+              <div className="bg-neutral-200 sm:p-1 rounded-lg shadow-button hover:scale-105 transition-all lg:mr-8">
                 <Link href={`/${pokemon.id + 1}`}>
                   <a className="rounded-lg p-2 flex justify-center items-center">
                     <CaretRight
@@ -93,66 +93,73 @@ function PokemonAbout(props: any) {
         </div>
       </div>
 
-      <div className="flex items-center justify-center w-screen mb-8">
-        <div className="w-10/12 flex items-center justify-center gap-4">
-          <h2 className="text-3xl text-neutral-800 capitalize font-exo mt-8">
+      <div className="flex items-center justify-center w-screen lg:w-full mb-8">
+        <div className="w-10/12 sm:w-9/12 md:w-8/12 lg:w-full flex items-center justify-center gap-4">
+          <h2 className="text-3xl text-neutral-800 capitalize font-exo mt-8 lg:text-2xl">
             {pokemon.name}
           </h2>
-          <span className="text-3xl text-neutral-600 capitalize font-exo mt-8">
+          <span className="text-3xl text-neutral-600 capitalize font-exo mt-8 lg:text-2xl">
             {IDMask()}
           </span>
         </div>
       </div>
 
-      <div className="flex flex-col w-10/12 bg-neutral-100 rounded-md p-3">
-        <img
-          src={pokemon.sprites.other["official-artwork"].front_default}
-          alt={pokemon.name}
-        />
-      </div>
-
-      <div className="w-10/12 flex items-center justify-center mt-8">
-        <p className="font-exo tracking-wide leading-7 text-neutral-800 text-base md:text-lg">
-          {description}
-        </p>
-      </div>
-
-      <div className="w-10/12 flex flex-col justify-start gap-4 my-8">
-        <span className="text-2xl font-exo text-neutral-700">
-          Type
-        </span>
-
-        <div className="w-full flex gap-2">
-          {pokemon.types.map((item: any) => (
-            toggleType(item.type.name, item.type.name)
-          ))}
+      <div className="flex flex-col lg:flex-row items-center justify-center w-10/12 sm:w-9/12 md:w-8/12 lg:w-8/12 lg:gap-4">
+        <div className="flex items-center justify-center lg:w-6/12">
+          <div className="flex items-center justify-center bg-neutral-100 lg:bg-neutral-200 rounded-md lg:w-full">
+          <img
+            className="w-full p-3"
+            src={pokemon.sprites.other["official-artwork"].front_default}
+            alt={pokemon.name}
+          />
+            </div>
         </div>
-      </div>
 
-      <div className="w-10/12 flex flex-col justify-start gap-3 mb-8">
-        <span className="text-2xl font-exo text-neutral-700">
-          Weakness
-        </span>
+        <div className="lg:w-6/12 lg:h-full lg:flex lg:flex-col lg:justify-between ">
+          <div className="w-full flex items-center justify-center mt-8 lg:mt-0">
+            <p className="font-exo tracking-wide leading-7 text-neutral-800 text-base md:text-lg lg:text-sm">
+              {description}
+            </p>
+          </div>
 
-        {weakness.map((type: string) => (
-          filterWeakness(type, type)
-        ))}
+          <div className="w-full flex flex-col justify-start gap-4 lg:gap-2 my-8 lg:my-0 lg:mt-4">
+            <span className="text-2xl font-exo text-neutral-700 lg:text-lg">
+              Type
+            </span>
 
-        <div className="w-full flex flex-wrap gap-2">
-          {weaknessNoDuplicates.map((type: string) => (
-            toggleWeakness(type, type)
-          ))}
+            <div className="w-full flex gap-2">
+              {pokemon.types.map((item: any) => (
+                toggleType(item.type.name, item.type.name)
+              ))}
+            </div>
+          </div>
+
+          <div className="w-full flex flex-col justify-start gap-3 lg:gap-2 mb-8 lg:mt-4 lg:mb-4">
+            <span className="text-2xl font-exo text-neutral-700 lg:text-lg">
+              Weakness
+            </span>
+
+            {weakness.map((type: string) => (
+              filterWeakness(type, type)
+            ))}
+
+            <div className="w-full flex flex-wrap gap-2">
+              {weaknessNoDuplicates.map((type: string) => (
+                toggleWeakness(type, type)
+              ))}
+            </div>
+          </div>
+
+          <div className="w-full sm:max-w-xs flex items-center justify-center lg:justify-start mt-4 lg:mt-8">
+            <Link href={"/"}>
+              <a className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 py-2 rounded transition-all shadow-button text-white font-exo text-lg lg:text-sm lg:w-48">
+                Explore more Pokémon
+              </a>
+            </Link>
+          </div>
         </div>
-      </div>
-
-      <div className="w-10/12 sm:max-w-sm flex items-center justify-center mt-4">
-        <Link href={"/"}>
-          <a className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 py-2 rounded transition-all shadow-button text-white font-exo text-lg">
-            Explore more Pokémon
-          </a>
-        </Link>
-      </div>
-    </div >
+      </div >
+    </div>
   )
 }
 
