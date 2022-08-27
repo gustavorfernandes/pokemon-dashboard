@@ -117,7 +117,7 @@ function PokemonCard(props: any) {
         </div>
       </div>
 
-      <div className="w-10/12 lg:w-full flex flex-col sm:flex-row sm:flex-wrap items-center justify-center sm:justify-start sm:gap-4 lg:gap-10 lg:max-h-[calc(100vh-200px)] lg:overflow-y-scroll scrollbar lg:mb-0 lg:px-4 lg:pl-12">
+      <div className="w-10/12 lg:w-full flex flex-col sm:flex-row sm:flex-wrap items-center justify-center sm:justify-start sm:gap-4 lg:gap-10 lg:max-h-[calc(100vh-200px)] lg:overflow-y-scroll scrollbar-pokemonList lg:mb-0 lg:px-4 lg:pl-12 lg:mr-4">
         {currentPokemons.map((pokemon: any) => {
           return (
             <div className="w-full sm:w-[48%] md:w-[31.5%] lg:w-[20%] xl:w-[13%] flex flex-col justify-center font-exo select-none mb-4" key={pokemon.number}>
@@ -189,10 +189,10 @@ function PokemonCard(props: any) {
               <div className="text-neutral-500">
                 <ul className="flex flex-col items-center justify-center gap-1 text-sm text-center">
                   <li className="list-disc">
-                    Reduce the number of search parameters
+                    Check if the pokemon name is correct
                   </li>
                   <li className="list-disc">
-                    Search for only one Pokémon type at a time
+                    Reduce the number of search parameters
                   </li>
                 </ul>
               </div>
@@ -234,10 +234,10 @@ function PokemonCard(props: any) {
           <div className="text-neutral-500">
             <ul className="flex flex-col items-center justify-center gap-1 text-sm text-center">
               <li className="list-disc">
-                Reduce the number of search parameters
+                Check if the pokemon name is correct
               </li>
               <li className="list-disc">
-                Search for only one Pokémon type at a time
+                Reduce the number of search parameters
               </li>
             </ul>
           </div>

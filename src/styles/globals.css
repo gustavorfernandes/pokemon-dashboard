@@ -17,3 +17,20 @@ body {
     background-color: rgb(245 245 245);
   }
 }
+
+@layer utilities {
+  .scrollbar-sideBar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .scrollbar-sideBar::-webkit-scrollbar-thumb {    
+    border-radius: 100vh;
+    background: #404040
+  }  
+  .scrollbar-pokemonList::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar-pokemonList::-webkit-scrollbar-thumb {    
+    border-radius: 10px;
+    background: #CFCECE
+  }  
+}

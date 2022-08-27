@@ -30,7 +30,7 @@ export function Sidebar() {
           alt="Pokeball"
         />
       </div>
-      <div className="w-full flex flex-col gap-4 pl-8 h-[75vh] overflow-y-scroll scrollbar-thin mb-8">
+      <div className="w-full flex flex-col gap-4 pl-8 h-[75vh] overflow-y-scroll scrollbar-sideBar scrollbar-track-neutral-800 scrollbar-thumb-neutral-700 mb-8 mr-[6px]">
         <h2 className="text-xs text-neutral-500 font-exo uppercase">
           Advanced Search
         </h2>
