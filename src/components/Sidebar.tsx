@@ -4,7 +4,7 @@ import { useContext, useState } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 export function Sidebar() {
-  const { pokemonList, setListByType, setCurrentPokemonList, setInitial }: any = useContext(GlobalContext)
+  const { pokemonList, setListByType, setCurrentPokemonList, setInitial, setSearch }: any = useContext(GlobalContext)
   const [isActive, setIsActive] = useState("")
 
   function searchByType(type: string) {
@@ -22,7 +22,7 @@ export function Sidebar() {
   }
 
   return (
-    <div className="hidden lg:flex flex-col items-center w-3/12 xl:w-[320px] h-screen bg-neutral-800 z-30">
+    <div className="hidden lg:flex flex-col items-center w-3/12 xl:w-[320px] h-screen bg-neutral-800 z-30 select-none">
       <div>
         <img
           className="w-28 xl:w-36 mt-4 mb-8"
@@ -50,6 +50,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -82,6 +83,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -114,6 +116,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -146,6 +149,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -178,6 +182,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -210,6 +215,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -242,6 +248,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -274,6 +281,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -306,6 +314,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -338,6 +347,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -370,6 +380,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -402,6 +413,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -435,6 +447,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -467,6 +480,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -499,6 +513,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -531,6 +546,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X
@@ -563,6 +579,7 @@ export function Sidebar() {
                 setCurrentPokemonList(currentList)
                 setInitial(false)
                 setIsActive("")
+                setSearch("")
               }}
             >
               <X

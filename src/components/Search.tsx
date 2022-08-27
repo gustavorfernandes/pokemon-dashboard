@@ -6,8 +6,7 @@ import { GlobalContext } from "../contexts/GlobalContext"
 function Search(props: any) {
   const initialList = props.pokemonsObject
 
-  const { listByType, currentPokemonList, setCurrentPokemonList, setItensPerPage, setInitial }: any = useContext(GlobalContext)
-  const [search, setSearch] = useState("")
+  const { listByType, currentPokemonList, setCurrentPokemonList, setItensPerPage, setInitial, search, setSearch }: any = useContext(GlobalContext)  
 
   function submitSearch(event: React.FormEvent) {
     event.preventDefault()
@@ -24,7 +23,6 @@ function Search(props: any) {
     <form onSubmit={(event) => {
       const currentList = submitSearch(event)
       setCurrentPokemonList(currentList)
-      setItensPerPage(12)
       setInitial(false)
     }}>
       <fieldset>
