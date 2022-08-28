@@ -65,7 +65,7 @@ function PokemonAbout(props: any) {
   }
 
   return (
-    <div className="w-screen lg:w-11/12 flex flex-col items-center justify-center lg:h-[calc(100vh-200px)]">
+    <div className="w-screen lg:w-11/12 flex flex-col items-center justify-center lg:h-[calc(100vh-160px)]">
       <div className="bg-neutral-800 lg:bg-neutral-100 h-full lg:h-8 w-screen lg:w-full flex items-center justify-center">
         <div className="w-10/12 sm:w-9/12 md:w-8/12 lg:w-full lg:max-w-[45rem] flex items-center justify-between py-6 lg:py-0 lg:mt-0 lg:mb-4">
           {pokemon.id >= 2 &&
@@ -106,8 +106,8 @@ function PokemonAbout(props: any) {
       </div>
 
       <div className="flex flex-col lg:flex-row items-center justify-center lg:items-start w-10/12 sm:w-9/12 md:w-8/12 lg:w-8/12 lg:max-w-[45rem] lg:gap-4">
-        <div className="flex items-center justify-center lg:w-6/12">
-          <div className="flex items-center justify-center bg-neutral-100 lg:bg-neutral-200 rounded-md lg:w-full lg:max-w-[15rem] ">
+        <div className="w-full flex items-center justify-center lg:w-6/12">
+          <div className="w-full flex items-center justify-center bg-neutral-100 lg:bg-neutral-200 rounded-md lg:max-w-[15rem] ">
             <img
               className="w-full p-3"
               src={pokemon.sprites.other["official-artwork"].front_default}
@@ -155,7 +155,7 @@ function PokemonAbout(props: any) {
       <div className="w-full lg:w-11/12 lg:max-w-[45rem] flex items-center justify-center lg:justify-end mt-4">
             <Link href={"/"}>
               <a
-                className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 py-2 rounded 
+                className="w-10/12 sm:w-9/12 md:w-8/12 flex items-center justify-center bg-green-600 hover:bg-green-700 py-2 rounded 
                 transition-all shadow-button text-white font-exo text-lg lg:text-xs lg:w-44"
                 onClick={() => {
                   setCurrentPokemonList(pokemons)

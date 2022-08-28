@@ -1,16 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Sidebar from "../components/Sidebar"
 import Footer from "../patterns/Footer"
 import Header from "../patterns/Header"
 import PokemonAbout from "../patterns/PokemonAbout"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 export function PokemonScreen(props: any) {
   const { setSelectList, setSearch, setPokemonCard, options }: any = useContext(GlobalContext)
 
-  setPokemonCard(true)
-  setSearch("")
-  setSelectList(options[0])
+  useEffect(() => {
+    setPokemonCard(true)
+    setSearch("")
+    setSelectList(options[0])
+  }, [])
 
   return (
     <>

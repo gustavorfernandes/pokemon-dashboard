@@ -37,7 +37,7 @@ function Header() {
 
   return (
     <>
-      <div className="w-screen flex flex-col items-center justify-center pt-4 lg:h-16 lg:hidden">
+      <div className={`w-screen flex flex-col items-center justify-center pt-4 lg:h-16 ${pokemonCard ? "hidden" : "lg:hidden"}`}>
         <div className="w-10/12 flex items-center justify-between">
           <img
             className="w-20 md:w-24 justify-self-center"
