@@ -11,7 +11,7 @@ export function DashboardScreen(props: any) {
         <Sidebar />
         <div className="flex w-full flex-col items-center">
           <Header />
-          <PokemonAbout pokemon={props.pokemon} description={props.description} strength={props.strength} weakness={props.weakness} />
+          <PokemonAbout pokemons={props.pokemons} pokemon={props.pokemon} description={props.description} strength={props.strength} weakness={props.weakness} />
         </div>
       </div>
       <Footer />

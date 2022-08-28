@@ -2,9 +2,10 @@
 import { Fire, X } from "phosphor-react"
 import { useContext, useState } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
+import PokemonCard from "./PokemonCard"
 
 export function Sidebar() {
-  const { pokemonList, setListByType, setCurrentPokemonList, setInitial, setSearch }: any = useContext(GlobalContext)
+  const { pokemonList, setListByType, setCurrentPokemonList, setInitial, setSearch, pokemonCard }: any = useContext(GlobalContext)
   const [isActive, setIsActive] = useState("")
 
   function searchByType(type: string) {
@@ -44,6 +45,7 @@ export function Sidebar() {
           {isActive === "bug" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -59,7 +61,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "bug" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "bug" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "bug") {
                 setIsActive("bug")
@@ -77,6 +80,7 @@ export function Sidebar() {
           {isActive === "electric" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -92,7 +96,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "electric" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "electric" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "electric") {
                 setIsActive("electric")
@@ -110,6 +115,7 @@ export function Sidebar() {
           {isActive === "dragon" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -125,7 +131,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "dragon" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "dragon" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "dragon") {
                 setIsActive("dragon")
@@ -143,6 +150,7 @@ export function Sidebar() {
           {isActive === "fairy" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -158,7 +166,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "fairy" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "fairy" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "fairy") {
                 setIsActive("fairy")
@@ -176,6 +185,7 @@ export function Sidebar() {
           {isActive === "fighting" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -191,7 +201,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "fighting" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "fighting" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "fighting") {
                 setIsActive("fighting")
@@ -209,6 +220,7 @@ export function Sidebar() {
           {isActive === "fire" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -224,7 +236,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "fire" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "fire" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "fire") {
                 setIsActive("fire")
@@ -242,6 +255,7 @@ export function Sidebar() {
           {isActive === "flying" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -257,7 +271,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "flying" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "flying" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "flying") {
                 setIsActive("flying")
@@ -275,6 +290,7 @@ export function Sidebar() {
           {isActive === "ghost" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -290,7 +306,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "ghost" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "ghost" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "ghost") {
                 setIsActive("ghost")
@@ -308,6 +325,7 @@ export function Sidebar() {
           {isActive === "grass" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -323,7 +341,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "grass" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "grass" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "grass") {
                 setIsActive("grass")
@@ -341,6 +360,7 @@ export function Sidebar() {
           {isActive === "ground" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -356,7 +376,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "ground" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "ground" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "ground") {
                 setIsActive("ground")
@@ -374,6 +395,7 @@ export function Sidebar() {
           {isActive === "ice" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -389,7 +411,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "ice" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "ice" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "ice") {
                 setIsActive("ice")
@@ -407,6 +430,7 @@ export function Sidebar() {
           {isActive === "normal" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -422,7 +446,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "normal" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "normal" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "normal") {
                 setIsActive("normal")
@@ -440,6 +465,7 @@ export function Sidebar() {
           {isActive === "poison" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -456,7 +482,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "poison" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "poison" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "poison") {
                 setIsActive("poison")
@@ -474,6 +501,7 @@ export function Sidebar() {
           {isActive === "psychic" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -489,7 +517,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "psychic" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "psychic" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "psychic") {
                 setIsActive("psychic")
@@ -507,6 +536,7 @@ export function Sidebar() {
           {isActive === "rock" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -522,7 +552,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "rock" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "rock" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "rock") {
                 setIsActive("rock")
@@ -540,6 +571,7 @@ export function Sidebar() {
           {isActive === "steel" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -555,7 +587,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "steel" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "steel" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "steel") {
                 setIsActive("steel")
@@ -573,6 +606,7 @@ export function Sidebar() {
           {isActive === "water" &&
             <button
               className="text-neutral-200 flex items-center justify-center absolute left-[18px]"
+              disabled={pokemonCard}
               onClick={() => {
                 const currentList = searchByType("")
                 setListByType(currentList)
@@ -588,7 +622,8 @@ export function Sidebar() {
             </button>
           }
           <button
-            className={`font-exo self-start ml-10 hover:text-neutral-200 transition-all text-sm ${isActive === "water" ? "text-neutral-200" : "text-neutral-500"}`}
+            className={`font-exo self-start ml-10 ${pokemonCard ? "hover:text-neutral-500" : "hover:text-neutral-200"} transition-all text-sm ${isActive === "water" ? "text-neutral-200" : "text-neutral-500"}`}
+            disabled={pokemonCard}
             onClick={() => {
               if (isActive != "water") {
                 setIsActive("water")

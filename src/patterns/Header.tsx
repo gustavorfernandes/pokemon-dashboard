@@ -8,7 +8,7 @@ import Search from "../components/Search"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 function Header() {
-  const { setInitial, setItensPerPage, pokemonList, setCurrentPokemonList, selectList, setSelectList, options, order, setOrder, filter, setFilter, filterOrder, setFilterOrder }: any = useContext(GlobalContext)
+  const { setInitial, setItensPerPage, pokemonList, setCurrentPokemonList, selectList, setSelectList, options, order, setOrder, filter, setFilter, filterOrder, setFilterOrder, pokemonCard }: any = useContext(GlobalContext)
 
   const [isOpen, setOpen] = useState(false)
   
@@ -71,7 +71,7 @@ function Header() {
               Sort by
             </span>
             <div className="w-full max-w-[15rem] text-white font-exo z-20">
-              <Listbox value={selectList} onChange={(e) => {
+              <Listbox disabled={pokemonCard} value={selectList} onChange={(e) => {
                 if (e.id === 1) {
                   setOrder(1)
                   setFilterOrder("number")                  

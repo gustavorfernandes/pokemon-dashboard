@@ -2,9 +2,9 @@ import axios from "axios"
 import Head from "next/head"
 import PokemonScreen from "../src/screens/PokemonScreen"
 
-const Pokemon = ({ pokemon, description, strength, weakness }: any) => {
+const Pokemon = ({ pokemons, pokemon, description, strength, weakness }: any) => {
   let pokemonName = pokemon.name
-  pokemonName = pokemonName[0].toUpperCase() + pokemonName.slice(1)
+  pokemonName = pokemonName[0].toUpperCase() + pokemonName.slice(1)  
 
   return (
     <>
@@ -13,7 +13,7 @@ const Pokemon = ({ pokemon, description, strength, weakness }: any) => {
         <meta name="description" content="Pokémon About Page" />
       </Head>
 
-      <PokemonScreen pokemon={pokemon} description={description} strength={strength} weakness={weakness} />
+      <PokemonScreen pokemons={pokemons} pokemon={pokemon} description={description} strength={strength} weakness={weakness} />
     </>
   )
 }
@@ -35,6 +35,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
+  const pokemons = await axios.get("https://pokeapi.co/api/v2/pokedex/2/")
+    .then((response) => {
+      return response.data.pokemon_entries
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  
   const pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${params.id}/`)
     .then((response) => {
       return response.data
@@ -86,7 +94,7 @@ export async function getStaticProps({ params }: any) {
       })
   }))
 
-  return { props: { pokemon, description, strength, weakness } }
+  return { props: { pokemons, pokemon, description, strength, weakness } }
 }
 
 export default Pokemon

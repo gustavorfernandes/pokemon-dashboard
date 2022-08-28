@@ -6,7 +6,7 @@ import { GlobalContext } from "../contexts/GlobalContext"
 function Search(props: any) {
   const initialList = props.pokemonsObject
 
-  const { listByType, currentPokemonList, setCurrentPokemonList, setItensPerPage, setInitial, search, setSearch }: any = useContext(GlobalContext)  
+  const { listByType, currentPokemonList, setCurrentPokemonList, setItensPerPage, setInitial, search, setSearch, pokemonCard }: any = useContext(GlobalContext)  
 
   function submitSearch(event: React.FormEvent) {
     event.preventDefault()
@@ -34,14 +34,16 @@ function Search(props: any) {
             type="text"
             onChange={(event) => setSearch(event.target.value)}
             placeholder="Name or number"
+            disabled={pokemonCard}
           />
           <label
             htmlFor="search"
           />
 
           <button
-            className="flex justify-center items-center bg-red-500 hover:bg-red-600 transition-all p-3 md:p-0 md:w-14 lg:w-12 md:h-14 lg:h-10 rounded-md lg:rounded-none lg:rounded-tr-md lg:rounded-br-md shadow-button"
+            className="flex justify-center items-center bg-red-500 hover:bg-red-600 transition-all p-3 md:p-0 md:w-14 lg:w-12 md:h-14 lg:h-10 rounded-md lg:rounded-none lg:rounded-tr-md lg:rounded-br-md shadow-button disabled:bg-neutral-500"
             type="submit"
+            disabled={pokemonCard}
           >
             <GoSearch
               color="white"

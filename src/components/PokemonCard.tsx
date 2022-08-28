@@ -21,7 +21,7 @@ function toggleType(type: string, index: string) {
 }
 
 function PokemonCard(props: any) {
-  const { currentPokemonList, itensPerPage, setItensPerPage, isInitial, selectList, setSelectList, options, order, setOrder, filterOrder, setFilterOrder }: any = useContext(GlobalContext)
+  const { currentPokemonList, itensPerPage, setItensPerPage, isInitial, selectList, setSelectList, options, order, setOrder, filterOrder, setFilterOrder, setPokemonCard, setSearch }: any = useContext(GlobalContext)
   const pokemons = currentPokemonList
   const [loading, setLoading] = useState(false)
 
@@ -124,7 +124,11 @@ function PokemonCard(props: any) {
 
               <div className="w-full bg-neutral-100 lg:bg-neutral-200 p-8 sm:p-2 rounded-lg flex items-center justify-center mb-2">
                 <Link href={`/${pokemon.number}`}>
-                  <a>
+                  <a onClick={() => {
+                    setPokemonCard(true)
+                    setSearch("")
+                    setSelectList(options[0])
+                  }}>
                     <img
                       className="w-full hover:animate-oneTimeBounce"
                       src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.number}.png`}
@@ -158,7 +162,7 @@ function PokemonCard(props: any) {
         {pokemons.length > currentPokemons.length && pokemons.length > 0 &&
           <div className="hidden w-full lg:flex items-center justify-center my-2 relative">
             <button
-              className="w-full md:max-w-xs bg-sky-600 hover:bg-sky-700 rounded transition-all shadow-button text-white font-exo text-lg h-12"
+              className="w-44 bg-sky-600 hover:bg-sky-700 rounded transition-all shadow-button text-white font-exo text-xs h-10"
               onClick={(e) => {
                 loadMorePokemon()
               }}
@@ -170,7 +174,7 @@ function PokemonCard(props: any) {
               }
             </button>
             {loading &&
-              <div className="absolute bottom-1">
+              <div className="absolute bottom-0">
                 <Loading />
               </div>
             }
