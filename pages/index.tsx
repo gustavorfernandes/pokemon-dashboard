@@ -1,8 +1,5 @@
 import type { NextPage } from "next"
 import Head from "next/head"
-import Footer from "../src/patterns/Footer"
-import Header from "../src/patterns/Header"
-import PokemonList from "../src/patterns/PokemonList"
 import axios from "axios"
 import { useContext } from "react"
 import { GlobalContext } from "../src/contexts/GlobalContext"

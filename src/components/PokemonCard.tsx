@@ -21,7 +21,7 @@ function toggleType(type: string, index: string) {
 }
 
 function PokemonCard(props: any) {
-  const { currentPokemonList, itensPerPage, setItensPerPage, isInitial, selectList, setSelectList, options, order, setOrder, filterOrder, setFilterOrder, setPokemonCard, setSearch }: any = useContext(GlobalContext)
+  const { currentPokemonList, itensPerPage, setItensPerPage, isInitial, selectList, setSelectList, options, order, setOrder, filterOrder, setFilterOrder }: any = useContext(GlobalContext)
   const pokemons = currentPokemonList
   const [loading, setLoading] = useState(false)
 
@@ -124,11 +124,7 @@ function PokemonCard(props: any) {
 
               <div className="w-full bg-neutral-100 lg:bg-neutral-200 p-8 sm:p-2 rounded-lg flex items-center justify-center mb-2">
                 <Link href={`/${pokemon.number}`}>
-                  <a onClick={() => {
-                    setPokemonCard(true)
-                    setSearch("")
-                    setSelectList(options[0])
-                  }}>
+                  <a>
                     <img
                       className="w-full hover:animate-oneTimeBounce"
                       src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.number}.png`}

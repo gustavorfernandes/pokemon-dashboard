@@ -67,7 +67,7 @@ function PokemonAbout(props: any) {
   return (
     <div className="w-screen lg:w-11/12 flex flex-col items-center justify-center lg:h-[calc(100vh-200px)]">
       <div className="bg-neutral-800 lg:bg-neutral-100 h-full lg:h-8 w-screen lg:w-full flex items-center justify-center">
-        <div className="w-10/12 sm:w-9/12 md:w-8/12 lg:w-full lg:max-w-[45rem] flex items-center justify-between py-6 lg:mt-8">
+        <div className="w-10/12 sm:w-9/12 md:w-8/12 lg:w-full lg:max-w-[45rem] flex items-center justify-between py-6 lg:py-0 lg:mt-0 lg:mb-4">
           {pokemon.id >= 2 &&
             <Link href={`/${pokemon.id - 1}`}>
               <a>
@@ -79,6 +79,7 @@ function PokemonAbout(props: any) {
               </a>
             </Link>
           }
+          <div className="w-10 h-10" />
           {pokemon.id <= 150 &&
             <Link href={`/${pokemon.id + 1}`}>
               <a>
@@ -95,10 +96,10 @@ function PokemonAbout(props: any) {
 
       <div className="flex items-center justify-center w-screen lg:w-full mb-8">
         <div className="w-10/12 sm:w-9/12 md:w-8/12 lg:w-full lg:max-w-[45rem] flex items-center justify-center gap-4">
-          <h2 className="text-3xl text-neutral-800 capitalize font-exo mt-8 lg:text-2xl">
+          <h2 className="text-3xl text-neutral-800 capitalize font-exo mt-8 lg:mt-0 lg:text-2xl">
             {pokemon.name}
           </h2>
-          <span className="text-3xl text-neutral-600 capitalize font-exo mt-8 lg:text-2xl">
+          <span className="text-3xl text-neutral-600 capitalize font-exo mt-8 lg:mt-0 lg:text-2xl">
             {IDMask()}
           </span>
         </div>
@@ -116,8 +117,8 @@ function PokemonAbout(props: any) {
         </div>
 
         <div className="lg:w-6/12 lg:flex lg:flex-col lg:justify-between ">
-          <div className="w-full flex items-center justify-center mt-8 lg:mt-0">
-            <p className="font-exo tracking-wide leading-7 text-neutral-800 text-base md:text-lg lg:text-sm">
+          <div className="w-full flex items-center justify-center lg:items-start mt-8 lg:mt-0 lg:min-h-[5rem]">
+            <p className="font-exo tracking-wide leading-7 text-neutral-800 text-base md:text-lg lg:text-xs">
               {description}
             </p>
           </div>
@@ -134,7 +135,7 @@ function PokemonAbout(props: any) {
             </div>
           </div>
 
-          <div className="w-full flex flex-col justify-start gap-3 lg:gap-1 mb-8 lg:mt-4 lg:mb-4">
+          <div className="w-full flex flex-col justify-start gap-3 lg:gap-1 mb-8 lg:mt-4 lg:mb-0 lg:min-h-[4.75rem]">
             <span className="text-2xl font-exo text-neutral-700 lg:text-lg">
               Weakness
             </span>
@@ -151,7 +152,7 @@ function PokemonAbout(props: any) {
           </div>                   
         </div>        
       </div >
-      <div className="w-full lg:w-11/12 lg:max-w-[45rem] flex items-center justify-center lg:justify-end mt-4 lg:mt-8">
+      <div className="w-full lg:w-11/12 lg:max-w-[45rem] flex items-center justify-center lg:justify-end mt-4">
             <Link href={"/"}>
               <a
                 className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 py-2 rounded 

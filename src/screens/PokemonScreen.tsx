@@ -2,8 +2,15 @@ import Sidebar from "../components/Sidebar"
 import Footer from "../patterns/Footer"
 import Header from "../patterns/Header"
 import PokemonAbout from "../patterns/PokemonAbout"
+import { useContext } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
 
-export function DashboardScreen(props: any) {
+export function PokemonScreen(props: any) {
+  const { setSelectList, setSearch, setPokemonCard, options }: any = useContext(GlobalContext)
+
+  setPokemonCard(true)
+  setSearch("")
+  setSelectList(options[0])
 
   return (
     <>
@@ -19,4 +26,4 @@ export function DashboardScreen(props: any) {
   )
 }
 
-export default DashboardScreen
+export default PokemonScreen
