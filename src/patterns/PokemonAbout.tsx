@@ -118,7 +118,7 @@ function PokemonAbout(props: any) {
 
         <div className="lg:w-6/12 lg:flex lg:flex-col lg:justify-between ">
           <div className="w-full flex items-center justify-center lg:items-start mt-8 lg:mt-0 lg:min-h-[5rem]">
-            <p className="font-exo tracking-wide leading-7 text-neutral-800 text-base md:text-lg lg:text-xs">
+            <p className="font-exo tracking-wide leading-7 text-neutral-800 text-base md:text-lg lg:text-sm">
               {description}
             </p>
           </div>
